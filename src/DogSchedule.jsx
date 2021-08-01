@@ -126,7 +126,7 @@ function AddTaskToSchedule(props) {
         id="taskInput"
       />
       <br />
-      <label htmlFor="frequencyInput">Frequency (make this a dropdown)</label>
+      <label htmlFor="frequencyInput">Frequency</label>
 
       <select
         onChange={(event) => setFrequency(event.target.value)}
