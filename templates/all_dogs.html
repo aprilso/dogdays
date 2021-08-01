@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}List of all dogs{% endblock %}
+
+{% block body %}
+<h3>This is the all_dogs.html page</h3>
+<b> It is a list of all the dogs </b>
+<ul>
+    {% for dog in dogs %}
+
+    <li>
+        
+        <a href="/dogs/{{ dog.dog_id }}">{{ dog.dog_name }}</a>
+
+
+    </li>
+
+    {% endfor %}
+</ul>
+{% endblock body%}

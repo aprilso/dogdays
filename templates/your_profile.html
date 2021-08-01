@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.email }} - Details{% endblock %}
+
+{% block body %}
+<h1>Welcome, {{ user.first_name }} {{ user.last_name }}</h1>
+
+<h4>Info</h4>
+
+  <li>Email: {{ user.email }}
+  <li>Phone Number: {{ user.phone_number }}
+
+<p>
+<h4>Your dogs </h4>
+
+   <ul>
+    {% for userdog in userdogs %}
+    <li>
+        <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
+
+         <!-- Need to add if userdog.primary_user is True, add an indication -->
+    </li>
+    {% endfor %}
+</p>
+
+<a href="/add_dog">Add a dog</a>
+
+
+
+{% endblock %}

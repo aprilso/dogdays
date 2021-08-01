@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.vscode
+cloudinary_secrets.py
+env
+__pycache__
+package-lock.json

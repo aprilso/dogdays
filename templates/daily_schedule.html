@@ -1,0 +1,134 @@
+<!-- Note: For the moment, separate jinja templating from React -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Dog Daily Schedule</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+ <!-- React Libraries -->
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+
+  <script src="https://unpkg.com/react-dom@16.14.0/umd/react-dom.development.js"></script>
+  <!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> Previous old script -->
+  <script src="https://unpkg.com/react-router-dom@5.2.0/umd/react-router-dom.js"></script>
+
+  <!-- TO-DO download all script files, put in folder project file or find url for LATEST-->
+
+  <!-- Full Calendar CDN links-->
+
+  <!-- JS files from local folder -->
+  <link rel="stylesheet" href="/static/css/main.css"></script>
+  <script src="/static/js/FullCalendar-main.js"></script>
+  <script src="/static/js/react-main.cjs.js"></script>
+  
+
+  <!-- trying out -->
+  <!-- <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js'></script> -->
+
+  <!-- PLUGINS script sources (Added React here) - is this correct? MAYBE DELETE??-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.4.2/main.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.4.2/main.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/react"></script>  -->
+  
+  <!-- PLUGINS CSS here -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.4.2/main.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.4.2/main.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/list@4.4.2/main.min.css"> --> 
+
+  
+
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridWeek', //this works but only if I don't have the Plugins script
+        // plugins: ['dayGrid', 'list', 'react', 'interactionPlugin'],
+        // defaultView: 'dayGridMonth',
+
+        headerToolbar: {
+          center: 'addEventButton'
+        },
+        customButtons: {
+        addEventButton: {
+        text: 'add event...',
+        click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: 'dynamic event',
+        
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+            //TO-DO - send this addEvent info to the database, pass to API call, send as POST  
+
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
+    }
+        
+      });
+      calendar.render();
+    });
+
+  </script> 
+
+
+</head>
+
+{% block title %} {% endblock %}
+
+<body>
+  <h1>Dog Daily Schedule Page (React)</h1>
+    
+  <div id="root">
+      <p>
+        Note: script tag not importing!
+      </p>
+  </div>
+
+  <div id="calendar">
+    <p>
+      Note: calendar script tag not importing!
+    </p>
+  </div>
+
+  <div id="demo-app">
+    <p>
+      Note: demoapp script tag not importing!
+    </p>
+  </div>
+
+
+
+  <!-- <script src="/static/js/uiComponents.jsx" type="text/jsx"></script> -->
+  <script src="/static/js/App.jsx" type="text/jsx" ></script>
+  <script src="/static/js/DemoApp.jsx" type="text/jsx"></script>
+ 
+  
+
+</body>
+
+<!-- Note - check if this head and body tag work with the jinja templates -->
+</html>

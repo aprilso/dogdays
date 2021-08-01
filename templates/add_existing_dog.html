@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+
+{% block body %}
+<h3>Add an existing dog</h3>
+
+<p>Add this dog? 
+<a href='/lookup_dog'>Yes</a>
+<a href='/lookup_dog'>Search for another dog</a></p>
+<!-- TO-DO - Fix this -->
+
+<h1>This is {{ dog.dog_name }}</h1>
+
+<p>(dog image here) (upload image link) </p>
+
+<h4>Basics </h4>
+<li>Sex: {{ dog.sex }}
+<li>Breed: {{ dog.breed }}
+<li>Color: {{ dog.primary_color}}
+<li>Birthday: {{ dog.dob }}
+
+
+<p>
+  <h4>Their owner</h4> (put primary user if true, none if false)
+  #Need to add owner's contact info
+
+  <p>Their caretakers:
+  <ul>
+    {% for userdog in userdogs %}
+
+    <li>
+        <a href="/users/{{ userdog.user.user_id }}">{{ userdog.user.first_name }} {{userdog.user.last_name }}</a>
+    </li>
+
+    {% endfor %}
+
+</p>
+
+{% endblock body%}
