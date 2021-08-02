@@ -97,7 +97,7 @@ function AddTaskToSchedule(props) {
   const [frequency, setFrequency] = React.useState("");
   const [instructions, setInstructions] = React.useState("");
 
-  const frequencyList = ["Daily", "Weekly", "Monthly", "Yearly"];
+  const frequencyList = ["SELECT", "Once", "Daily", "Weekly", "Monthly", "Yearly"];
 
   function addNewTask() {
     fetch("/api/add-task", {
