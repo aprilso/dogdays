@@ -142,7 +142,7 @@ def new_dog_to_user():
     """Adds a new dog and automatically adds it to the user"""
 
     dog_name = request.form.get("dog_name")
-    photo = "default_dog_icon.jpg"
+    img_src = "default_dog_icon.jpg"
     bio = request.form.get("bio")
     medication = request.form.get("medication")
     medical_info = request.form.get("medical_info")
@@ -158,7 +158,7 @@ def new_dog_to_user():
 
     dog = crud.create_dog(
         dog_name,
-        photo,
+        img_src,
         bio,
         medication,
         medical_info,
@@ -172,6 +172,7 @@ def new_dog_to_user():
         microchip_num,
         dob,
     )
+    # for cloudinary, add img_url to crud, pass in img_url as part of crud
 
     # To-Do - Check that primary user is displayed as true
     user_id = session["user_id"]

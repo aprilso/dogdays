@@ -4,6 +4,7 @@
 {% block body %}
 <h2>Create a new dog</h2>
 <form action="/add_dog" method="POST">
+
   <p>
     Dog's name* <input type="text" name="dog_name">
   </p>
@@ -66,6 +67,11 @@
     <input type="submit">
   </p>
 </form>
+
+<form action="/upload-dog-photo" method="post" enctype="multipart/form-data">
+  <input type="file" name="dog-photo">
+  <input type="submit">
+</form> 
 
 <h2>Add an existing dog</h2>
 
