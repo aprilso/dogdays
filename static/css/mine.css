@@ -1,7 +1,30 @@
 body {
   background-color: #F2EAE4;
-
+  
+  
 }
+
+h1, h3, h4{
+  font-family: 'Itim', cursive;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.feature {
+	text-align: center;
+}
+
+section {
+	margin-top: 50px;
+}
+
+
+
+
+
+
 
 /* FROM the best-of-bootstrap.css */
 
