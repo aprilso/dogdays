@@ -4,19 +4,30 @@
 
 {% block body %}
 <h1>Welcome</h1>
+<p>Tagline - take care of your dogs </p>
 
-  <h2>Dev Test Links</h2>
-  <ul>
-    <li><a href="/dogs">View all dogs</a></li>
-    <li><a href="/users">View all users</a></li>
-    #this will be not publicly visible later
-  </ul>
+<p>(img here)</p>
 
-  <p>For display only: {{session}}</p>
+<h4>Info</h4>
+<p>Doggo ipsum what a nice floof noodle horse. heckin good boys boof. I am bekom fat wow such tempt. Length boy many pats extremely cuuuuuute boofers such treat, long doggo doing me a frighten smol heck, shoober clouds puggo. Shibe dat tungg tho adorable doggo super chub snoot, blop shibe fluffer. </p>
+
+<h4>Features</h4>
+Waggy wags porgo stop it fren wow very biscit shoob doggorino, smol borking doggo with a long snoot for pats fat boi woofer. 
+<ul>
+<li>Many pats pupperino blep long water shoob, heckin much ruin diet. shooberino pupper. 
+<li>Thicc wow very biscit maximum borkdrive heckin angery woofer
+<li>Very taste wow heckin good boys and girls, yapper floofs.
+</ul>
+
+<h4>(Demo or Info)</h4>
+<p>Puggorino adorable doggo I am bekom fat clouds he made many woofs, long bois extremely cuuuuuute. Pupper floofs doggo wow very biscit such treat doggo long bois, mlem smol borking doggo woofer. 
+</p>
+
+
 
   <!-- Reroute to a different page if you're logged in or not -->
 {% if not session %} 
-  <h2>Login</h2>
+  <h3>Login</h3>
   <form action="/login" method="POST">
     <p>
       Email <input type="text" name="login_email">
@@ -31,11 +42,20 @@
     </p>
   </form>
 
-<h2> Don't have an account yet? </h2>
-<h3><a href="/new_user">Create an account</a> </h3>
-
+<h3> Don't have an account yet? </h3>
+<h4><a href="/new_user">Create an account</a> </h4>
 {% endif %} 
 
+
+<hr size="8" width="90%" color="red">  
+  <h2>Dev Test Links</h2>
+  <ul>
+    <li><a href="/dogs">View all dogs</a></li>
+    <li><a href="/users">View all users</a></li>
+    #this will be not publicly visible later
+  </ul>
+
+  <p>For display only: {{session}}</p>
 
 
 

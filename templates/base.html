@@ -15,48 +15,55 @@
   {% block head %}{% endblock %}
 </head>
 <body>
-  <h4> Dog Days App </h4>
-  {% for msg in get_flashed_messages() %}
-  <p class="flash-msg">
-    {{ msg }}
-  </p>
-{% endfor %}
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Dark Navbar</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navExpandContent3"
-      />
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="navExpandContent3">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="#">Link</a>
-        </div>
-      </div>
-    </nav>
+  <!-- <h4> Dog Days App </h4> -->
+ 
 
 {% if session %} 
-<h4>Dashboard (will only display when logged in)</h4> 
+<!-- <h4>Dashboard (will only display when logged in)</h4>  -->
 
-  <ul>
+<nav class="navbar navbar-expand-md navbar-custom-theme">
+  <a class="navbar-brand" href="#">Dog Days</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navExpandContent3"
+  />
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse" id="navExpandContent3">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="/">Home</a>
+      <a class="nav-item nav-link" href="/users/{{ session.get('user_id') }}">Your profile</a>
+      <a class="nav-item nav-link" href="#">Settings</a>
+      <a class="nav-item nav-link" href="/logout">Log Out</a>
+      
+
+    </div>
+  </div>
+</nav>
+
+<!-- To delete -->
+  <!-- <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/users/{{ session.get('user_id') }}">Your profile</a></li> 
     <li>Notifications</li>
     <li><a href="/logout">Sign Out</a></li>
-  </ul>
+  </ul> -->
 
 {% endif %} 
+{% for msg in get_flashed_messages() %}
+<p class="flash-msg">
+  {{ msg }}
+</p>
+{% endfor %}
 
-<h4>(Secondary Navbar)</h4>
+<!-- <h4>(Secondary Navbar)</h4>
   <ul>
     <li>Settings</a></li>
     <li>Help</li>
     <li>About</li>
-  </ul>
+  </ul> -->
 
 {% block body %}{% endblock %}
 
