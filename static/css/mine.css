@@ -1,7 +1,6 @@
 body {
   background-color: #FEF9F8;
-  
-  
+
 }
 
 h1, h3, h4{
@@ -20,7 +19,17 @@ section {
 	margin-top: 50px;
 }
 
+.demo-1 {
+  background: no-repeat center/cover url("../images/landscape_smalldog.jpeg");
+}
 
+.jumbotron {
+  background-image: url("../images/lableash.jpeg");
+  background-size: cover;
+  min-height: 800px;
+  height: 100%;
+
+}
 
 
 

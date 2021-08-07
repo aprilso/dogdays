@@ -40,17 +40,12 @@
 <p>(Update info link)</p>
 
 <p>
-  <h4>Their owner</h4> (put primary user if true, none if false)
-  #Need to add owner's contact info
-
-  <p>Their caretakers:
+  <h4>Caretakers</h4> (put primary user if true, none if false)
   <ul>
     {% for userdog in userdogs %}
-
     <li>
         <a href="/users/{{ userdog.user.user_id }}">{{ userdog.user.first_name }} {{userdog.user.last_name }}</a>
     </li>
-
     {% endfor %}
 
 </p>

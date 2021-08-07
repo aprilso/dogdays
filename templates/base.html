@@ -26,7 +26,7 @@
   <!-- <h4> Dog Days App </h4> -->
  
 
-{% if session %} 
+
 <!-- <h4>Dashboard (will only display when logged in)</h4>  -->
 
 <nav class="navbar navbar-expand-md navbar-custom-theme">
@@ -42,10 +42,15 @@
   <div class="navbar-collapse collapse" id="navExpandContent3">
     <div class="navbar-nav ms-auto">
       <ul class="navbar-nav">
-        <a class="nav-item nav-link" href="/">Home</a>
+        
+        {% if session %} 
         <a class="nav-item nav-link" href="/users/{{ session.get('user_id') }}">Your profile</a>
         <a class="nav-item nav-link" href="#">Today</a>
         <a class="nav-item nav-link" href="/logout">Log Out</a>
+        {% else %}
+        <a class="nav-item nav-link" href="/new_user">Sign Up</a>
+        <a class="nav-item nav-link" href="#">Log In</a>
+        {% endif %} 
       </ul>
     </div>
   </div>
@@ -59,7 +64,7 @@
     <li><a href="/logout">Sign Out</a></li>
   </ul> -->
 
-{% endif %} 
+
 {% for msg in get_flashed_messages() %}
 <p class="flash-msg">
   {{ msg }}
