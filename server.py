@@ -79,15 +79,11 @@ def login():
     password = request.form.get("login_password")
 
     user = crud.get_user_by_email(email)
-    if not user or user.password != password:  # why use 'if not'?
+    if not user or user.password != password:  
         flash("The email or password is incorrect")
     else:
         session["user_email"] = user.email
-        session[
-            "user_id"
-        ] = (
-            user.user_id
-        )  # in the future, could just store user_id and lookup email from that
+        session["user_id"] = (user.user_id)  # in the future, could just store user_id and lookup email from that
         flash(
             f"Welcome back, {user.first_name}"
         )  # TO-DO - redirect to the logged in page instead
@@ -193,19 +189,34 @@ def lookup_dog():
     return redirect(f"/dogs/{ dog_id }")
 
 
+# @app.route("/lookup_dog", methods=["POST"])
+# def add_existing_dog():
+#     """Adds an existing dog to a user after looking it up"""
+
+#     dog_id = session["dog_id"]
+#     user_id = session["user_id"]
+#     primary_user = False  # because they're not the first person who created the dog
+    
+#     crud.assign_dog_to_human(user_id, dog_id, primary_user)
+
+#     flash("Success! You have been added as this dog's caretaker!")
+
+#     return redirect("/")
+
+
 @app.route("/lookup_dog", methods=["POST"])
 def add_existing_dog():
-    """Adds an existing dog to a user after looking it up"""
 
-    dog_id = session["dog_id"]
+    dog_id = request.form.get("dog_id")
     user_id = session["user_id"]
-    primary_user = False  # because they're not the first person who created the dog
+    primary_user = False 
 
     crud.assign_dog_to_human(user_id, dog_id, primary_user)
 
-    flash("Success! You have been added as this dog's caretaker!")
+    flash("Success! You have added this dog to your dogs!")
 
     return redirect("/")
+
 
 
 @app.route("/upload-user-photo", methods=["POST"])
@@ -245,29 +256,6 @@ def add_dog_photo():
 
 # ---TASKS SECTION ---
 
-# TEST_TASK_DATA for testing only - delete later
-TEST_TASK_DATA = [
-    {
-        "task_name": "Morning walk",
-        "frequency": "Daily",
-        "instructions": "Walk for 30 mins, clip on harness",
-    },
-    {
-        "task_name": "Evening meal",
-        "frequency": "Daily",
-        "instructions": "1 cup kibble, put in slow feeder bowl",
-    },
-    {
-        "task_name": "Parasite medication",
-        "frequency": "Monthly",
-        "instructions": "Put in food or coat in peanut butter, make sure dog swallows",
-    },
-    {
-        "task_name": "Nail trim",
-        "frequency": "Monthly",
-        "instructions": "Trim nails with nail clipper",
-    },
-]
 
 
 @app.route("/dogs/<dog_id>/schedule")
