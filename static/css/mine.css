@@ -11,6 +11,20 @@ p {
   font-family: 'Open Sans', sans-serif;
 }
 
+.logo-type {
+  font-family: Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif; 
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 26.4px; 
+  display: inline-block;
+}
+
+img, svg {
+  display: inline-block;
+}
+
 .feature {
 	text-align: center;
 }
@@ -26,7 +40,7 @@ section {
 .jumbotron {
   background-image: url("../images/lableash.jpeg");
   background-size: cover;
-  min-height: 800px;
+  min-height: 400px;
   height: 100%;
 
 }
@@ -41,7 +55,9 @@ section {
 
 /* Navbar background */
 .navbar-custom-theme {
-  background:#F23838;
+  /* background:#F23838; */
+  background: #2b2b2b;
+  /* background:	#c66d3a; */
   /* background: #F2994B; */
   
   

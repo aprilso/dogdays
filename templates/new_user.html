@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Create an account{% endblock %}
+{% block title %}Dog Days - Create an account{% endblock %}
 
 {% block body %}
 <h2>Create an Account</h2>
@@ -29,6 +29,33 @@
   </p>
 </form>
 
-<p>Already have an account? <a href="/">Login here</a></p>
+
+<body class="text-center">
+  <form class="form-signin" action="/users" method="POST">
+    <img class="mb-4" src="static/images/DogDaysLogo_CreamRed.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Create a new account</h1>
+
+    <label for="first_name" class="sr-only">First Name</label>
+    <input type="text" name="first_name" class="form-control" placeholder="First Name" required autofocus>
+
+    <label for="last_name" class="sr-only">Last Name</label>
+    <input type="text" name="last_name" class="form-control" placeholder="Last Name" required autofocus>
+
+    <label for="phone_number" class="sr-only">Phone Number</label>
+    <input type="text" name="phone_number" class="form-control" placeholder="000-000-0000" required autofocus>
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" class="form-control" placeholder="email@domain.com" required autofocus>
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    <!-- <input type="submit"> -->
+
+  </form>
+</body>
+
+<p class="mt-5 mb-3 text-muted">Already have an account? <a href="/">Login here</a></p>
 
 {% endblock body %}

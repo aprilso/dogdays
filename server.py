@@ -71,6 +71,11 @@ def dogprofile(dog_id):
         "dog_profile.html", dog=dog, userdogs=userdogs, img_src=img_url
     )
 
+@app.route("/login")
+def login_page():
+    """log in page"""
+
+    return render_template("login.html")
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -80,15 +85,17 @@ def login():
 
     user = crud.get_user_by_email(email)
     if not user or user.password != password:  
-        flash("The email or password is incorrect")
+        flash("The email or password is incorrect.")
+        return redirect("/login")
     else:
         session["user_email"] = user.email
-        session["user_id"] = (user.user_id)  # in the future, could just store user_id and lookup email from that
+        session["user_id"] = user.user_id  # in the future, could just store user_id and lookup email from that
         flash(
             f"Welcome back, {user.first_name}"
         )  # TO-DO - redirect to the logged in page instead
-
     return redirect("/")
+
+    
 
 
 @app.route("/logout")

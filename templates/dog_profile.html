@@ -22,34 +22,39 @@
 <li>Color: {{ dog.primary_color}}
 <li>Birthday: {{ dog.dob }}
 <li>Bio: {{ dog.bio }}
-<p>(Update info link)</p>
 
 <!-- ASK: How to do this cleaner with loop? -->
+<!-- <p>(Update info link)</p> -->
+
 
 <h4>Medical </h4>
 <li>Medical Notes: {{dog.medical_info}}
 <li>Allergies: {{dog.allergies}}
 <li>Medication: {{dog.medication}}
-<li>Weight (need to add last date recorded weight): {{dog.weight}}
+<li>Weight (lbs): {{dog.weight}}
 <li>Food: {{dog.food}}
 <li>Microchip Number: {{dog.microchip_num}}
-<p>(Update info link)</p>
 
 <h4>Miscellaneous</h4>
 <li>Notes: {{dog.misc_notes}}
-<p>(Update info link)</p>
 
 <p>
-  <h4>Caretakers</h4> (put primary user if true, none if false)
+  <h4>Caretakers</h4>
   <ul>
     {% for userdog in userdogs %}
+    
     <li>
+        
         <a href="/users/{{ userdog.user.user_id }}">{{ userdog.user.first_name }} {{userdog.user.last_name }}</a>
+        {% if loop.first %} <i>(main caretaker)</i>
+        {% endif %}
+        
     </li>
     {% endfor %}
 
 </p>
 <p>Dog ID: {{dog.dog_id}}</p>
+<i>use this to add a dog </i>
 
 
 {% endblock body%}
