@@ -21,7 +21,7 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 220px;
+  max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -47,4 +47,16 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+
+label {
+  display: inline-block;
+  padding: 5px;
+
+}
+
+.btn {
+  margin: 20px;
+  /* used for Sign Up page, this could be an issue on other buttons */
 }

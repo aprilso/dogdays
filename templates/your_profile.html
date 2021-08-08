@@ -22,10 +22,12 @@
 
          <!-- Need to add if userdog.primary_user is True, add an indication -->
     </li>
+    {% else %}
+    <p>No dogs have been added yet.</p>
     {% endfor %}
 </p>
 
-<p>Need to add that you only see this if it's your profile<p>
+<p>[Need to add that you only see this if it's your profile]<p>
 <a href="/add_dog">Add a dog</a>
 
 

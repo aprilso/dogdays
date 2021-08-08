@@ -77,6 +77,7 @@ label {
 
 .btn {
   margin: 20px;
+  /* used for Sign Up page, this could be an issue on other buttons */
 }
 /* FROM the best-of-bootstrap.css */
 
