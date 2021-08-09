@@ -1,7 +1,7 @@
 """CRUD operations (Create Read Update Delete) """
 
 from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db
-from datetime import datetime
+from datetime import datetime, date
 
 def create_user(first_name, last_name, email, password, phone_number, icon):
   """Create and return a new user."""
@@ -50,6 +50,13 @@ def create_dog(dog_name, photo, bio, medication, medical_info, allergies, weight
 # def update_dog():
 #Note: check out ratings lab crud.py
 
+# def edit_dog(dog_id):
+#   """Edit the info for an existing dog"""
+
+#   editing_dog = Dog.query.get(dog_id)
+
+#   if request.method != 'POST':
+
 
 def get_dog_by_id(dog_id):
   """look up the dog by id"""
@@ -63,7 +70,7 @@ def update_dog_photo(dog_id, new_photo):
   """update the dog's photo url from the upload"""
   # 7/25/21 - check if this works
 
-  old_photo = Dog.query.filter(Dog.dog_id==dog_id).first()
+  old_photo = Dog.query.get(dog_id)
   old_photo.photo = new_photo
   db.session.commit()
 
@@ -91,6 +98,27 @@ def assign_dog_to_human(user_id, dog_id, primary_user):
   db.session.commit()
 
   return userdog
+
+# DELETE LATER
+# def dog_age(dog_id):
+#   """return the dog's age"""
+
+#     today = datetime.now()
+#     # today_year = datetime.now().year
+#     # today_month = datetime.now().month
+
+#     dog_year = dog.dob.year
+#     dog_month = dog.dob.month
+
+#     years = today.year - dog_year
+#     months = today.month - dog_month
+
+#     if (today.day < dog.dob.day):
+#         months -= 1
+#         while months < 0:
+#             months += 12
+#             years -= 1
+#     return dog_age = '%sy %smo'% (years, months)
 
 #TASKS SECTION ----
 

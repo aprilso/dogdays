@@ -6,13 +6,18 @@
 
 <h3><span class="material-icons">pets</span>{{ dog.dog_name }}'s Profile</h3>
 
-<img src="{{ img_src }}">
-<p>(dog image here) (upload image link) </p>
 
-<form action="/upload-dog-photo" method="post" enctype="multipart/form-data">
+<div class="center-cropped img-thumbnail" 
+     style="background-image: url('{{ dog.photo }}');">
+</div>
+
+<!-- <img src="{{ dog.photo }}" class="img-responsive" style="height:200px"> -->
+<!-- <p>(dog image here) (upload image link) </p> -->
+
+<!-- <form action="/upload-dog-photo" method="post" enctype="multipart/form-data">
   <input type="file" name="dog-photo">
   <input type="submit">
-</form>
+</form> -->
 
 <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li>
 

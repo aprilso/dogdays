@@ -79,6 +79,21 @@ label {
   margin: 20px;
   /* used for Sign Up page, this could be an issue on other buttons */
 }
+
+.center-cropped {
+  object-fit: contain;
+  object-position: center;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
 /* FROM the best-of-bootstrap.css */
 
 /* All the colors you can customize for a navbar! */

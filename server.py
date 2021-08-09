@@ -170,7 +170,7 @@ def new_dog_to_user():
     """Adds a new dog and automatically adds it to the user"""
 
     dog_name = request.form.get("dog_name")
-    img_src = "default_dog_icon.jpg"
+    # img_src = "default_dog_icon.jpg"
     bio = request.form.get("bio")
     medication = request.form.get("medication")
     medical_info = request.form.get("medical_info")
@@ -184,9 +184,22 @@ def new_dog_to_user():
     microchip_num = request.form.get("microchip_num") or None
     dob = request.form.get("dob") or None
 
+
+     #Cloudinary part
+    dog_photo = request.files["dog-photo"]
+
+    result = cloudinary.uploader.upload(
+        dog_photo,
+        api_key=CLOUDINARY_KEY,
+        api_secret=CLOUDINARY_SECRET,
+        cloud_name="dogdays",
+    )
+
+    photo = result["secure_url"]
+
     dog = crud.create_dog(
         dog_name,
-        img_src,
+        photo,
         bio,
         medication,
         medical_info,
@@ -202,10 +215,13 @@ def new_dog_to_user():
     )
     # for cloudinary, add img_url to crud, pass in img_url as part of crud
 
+
     # To-Do - Check that primary user is displayed as true
     user_id = session["user_id"]
     dog_id = dog.dog_id
     primary_user = True
+
+    crud.update_dog_photo(dog_id, photo)
 
     crud.assign_dog_to_human(user_id, dog_id, primary_user)
     flash("Success! New dog has been added with you as primary user")
@@ -266,25 +282,25 @@ def show_image():
     return redirect(f"/dogs/{ dog_id }")
 
 
-@app.route("/upload-dog-photo", methods=["POST"])
-def add_dog_photo():
-    """Process and upload a dog profile photo"""
-    dog_photo = request.files["dog-photo"]
+# @app.route("/upload-dog-photo", methods=["POST"])
+# def add_dog_photo():
+#     """Process and upload a dog profile photo"""
+#     dog_photo = request.files["dog-photo"]
 
-    result = cloudinary.uploader.upload(
-        dog_photo,
-        api_key=CLOUDINARY_KEY,
-        api_secret=CLOUDINARY_SECRET,
-        cloud_name="dogdays",
-    )
+#     result = cloudinary.uploader.upload(
+#         dog_photo,
+#         api_key=CLOUDINARY_KEY,
+#         api_secret=CLOUDINARY_SECRET,
+#         cloud_name="dogdays",
+#     )
 
-    img_url = result["secure_url"]
-    dog_id = session["dog_id"]
+#     img_url = result["secure_url"]
+#     dog_id = session["dog_id"]
 
-    crud.update_dog_photo(dog_id, img_url)
-    # need to save this result to the database so it can be accessed again - update this as "photo" in the database
+#     crud.update_dog_photo(dog_id, img_url)
+#     # need to save this result to the database so it can be accessed again - update this as "photo" in the database
 
-    return redirect(url_for("show_image", imgURL=img_url))
+#     return redirect(url_for("show_image", imgURL=img_url))
 
 
 
