@@ -111,7 +111,10 @@ label {
   background-repeat: no-repeat;
 }
 
-
+.new-user {
+  background-image: url("../images/dog-left-corner.jpg");
+  background-size: cover;
+}
 
 
 
