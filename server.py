@@ -17,6 +17,8 @@ import cloudinary.uploader
 from cloudinary_secrets import CLOUDINARY_KEY, CLOUDINARY_SECRET
 from jinja2 import StrictUndefined
 from time import sleep
+from datetime import datetime, date 
+
 
 app = Flask(__name__)
 app.secret_key = "thiswillbeasecretkey"  # Used to encrypt a session. Can set it to generate random #s and letters each time, or in secrets.sh (make more secret before deployment)
@@ -47,7 +49,8 @@ def userprofile(user_id):
     user = crud.get_user_by_id(user_id)
     userdogs = crud.get_dog_by_user(user_id)
 
-    return render_template("your_profile.html", user=user, userdogs=userdogs)
+    return render_template("your_profile.html", user=user, userdogs=userdogs, 
+                                                today=str(date.today()))
 
 
 @app.route("/dogs")
@@ -67,8 +70,30 @@ def dogprofile(dog_id):
     userdogs = crud.get_user_by_dog(dog_id)
     img_url = request.args.get("imgURL")
 
+    # today_date = datetime.now()
+    # dog_birthday = dog.dob
+    # dog_age = ((today_date - dog_birthday) /(365.25 / 12))
+
+    today = datetime.now()
+    # today_year = datetime.now().year
+    # today_month = datetime.now().month
+
+    dog_year = dog.dob.year
+    dog_month = dog.dob.month
+
+    years = today.year - dog_year
+    months = today.month - dog_month
+
+    if (today.day < dog.dob.day):
+        months -= 1
+        while months < 0:
+            months += 12
+            years -= 1
+    dog_age = '%sy %smo'% (years, months)
+
     return render_template(
-        "dog_profile.html", dog=dog, userdogs=userdogs, img_src=img_url
+        "dog_profile.html", dog=dog, userdogs=userdogs, img_src=img_url,
+        dog_age = dog_age
     )
 
 @app.route("/login")
@@ -195,7 +220,7 @@ def lookup_dog():
 
     return redirect(f"/dogs/{ dog_id }")
 
-
+#OLD
 # @app.route("/lookup_dog", methods=["POST"])
 # def add_existing_dog():
 #     """Adds an existing dog to a user after looking it up"""
@@ -213,6 +238,7 @@ def lookup_dog():
 
 @app.route("/lookup_dog", methods=["POST"])
 def add_existing_dog():
+    """adds an existing dog to a user after looking it up"""
 
     dog_id = request.form.get("dog_id")
     user_id = session["user_id"]
@@ -261,8 +287,10 @@ def add_dog_photo():
     return redirect(url_for("show_image", imgURL=img_url))
 
 
-# ---TASKS SECTION ---
 
+
+
+# ---TASKS SECTION ---
 
 
 @app.route("/dogs/<dog_id>/schedule")
