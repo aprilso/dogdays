@@ -45,6 +45,27 @@ section {
 
 }
 
+.column {
+  float: left;
+  width: 45%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bordered {
+  border: thin solid;
+  border-radius: 5px;
+  margin: 2%;
+  padding: 2%;
+}
+/* div {
+  column-rule: 2px double;
+} */
+
 
 /* FORM settings */
 

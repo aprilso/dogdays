@@ -3,97 +3,102 @@
 
 {% block body %}
 
+
 <section class="forms-demo container mt-4">
   <div class="row">
-    <div class="col">
-    <h2>Create a new dog</h2>
-    <form action="/add_dog" method="POST" enctype="multipart/form-data">
+    <div class="column bordered">
+      <h3>Create a new dog</h3>
+      <form action="/add_dog" method="POST" enctype="multipart/form-data">
 
-      <p>
-        Dog's name* <input type="text" name="dog_name">
-      </p>
+        <p>
+          Dog's name* <input type="text" name="dog_name">
+        </p>
 
-      <label for="sex">Sex</label>
-      <select id="sex" name="sex">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-      </select>
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex">
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
 
+        <p>
+          Date of Birth 
+          <i>(YYYY-MM-DD)</i>
+          <br>
+          <input type="datetime" name="dob">
+        </p>
 
-      <p>
-        Date of Birth 
-        <i>(YYYY-MM-DD)</i>
-        <br>
-        <input type="datetime" name="dob">
-      </p>
+        <p>
+          Breed <input type="text" name="breed">
+        </p>
 
-      <p>
-        Breed <input type="text" name="breed">
-      </p>
+        <p>
+          Primary Color <input type="text" name="primary_color">
+        </p>
 
-      <p>
-        Primary Color <input type="text" name="primary_color">
-      </p>
+        <p>
+          Bio <input type="text" name="bio">
+        </p>
 
-      <p>
-        Bio <input type="text" name="bio">
-      </p>
+        <p>
+          Microchip Number <input type="text" name="microchip_num">
+        </p>
 
-      <p>
-        Microchip Number <input type="text" name="microchip_num">
-      </p>
+        <p>
+          Medication <input type="text" name="medication">
+        </p>
 
-      <p>
-        Medication <input type="text" name="medication">
-      </p>
+        <p>
+          Medical Info <input type="text" name="medical_info">
+        </p>
 
-      <p>
-        Medical Info <input type="text" name="medical_info">
-      </p>
+        <p>
+          Allergies <input type="text" name="allergies">
+        </p>
 
-      <p>
-        Allergies <input type="text" name="allergies">
-      </p>
+        <p>
+          Weight <input type="integer" name="weight"> 
+        </p>
 
-      <p>
-        Weight <input type="integer" name="weight"> 
-      </p>
+        <p>
+          Food <input type="text" name="food"> 
+        </p>
 
-      <p>
-        Food <input type="text" name="food"> 
-      </p>
+        <p>
+          Miscellaneous Notes <input type="text" name="misc_notes"> 
+        </p>
 
-      <p>
-        Miscellaneous Notes <input type="text" name="misc_notes"> 
-      </p>
+        <p>Photo
+        <!-- <form action="/upload-dog-photo" method="post" > -->
+        <input type="file" name="dog-photo">
+        </p>
 
-      <!-- <form action="/upload-dog-photo" method="post" > -->
-      <input type="file" name="dog-photo">
-      <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
 
-
-      <p>
-        <input type="submit">
-      </p>
-    </form>
-
-
+        <!-- <p>
+          <input type="submit">
+        </p> -->
+      </form>
     </div>
+ 
+    <div class="column bordered">
+      <h3>Add an existing dog</h3>
+
+      <p> Add by dog id </p>
+
+
+      <form action="/lookup_dog" method="POST">
+      <p>
+          Dog ID <input type="integer" name="dog_id">
+      </p>
+      <p>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add Dog</button>
+        <!-- <input type="submit"> -->
+      </p>
+      </form>
+    </div>
+
   </div>
 </section>
-
-<h2>Add an existing dog</h2>
-
-<p> Add by dog id </p>
-
-<form action="/lookup_dog" method="POST">
-<p>
-    Dog ID <input type="integer" name="dog_id">
-</p>
-<p>
-  <input type="submit">
-</p>
-</form>
 
 
 {% endblock body %}
