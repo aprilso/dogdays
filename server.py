@@ -334,7 +334,6 @@ def add_task():
         "frequency": created_task.frequency,
         "instructions": created_task.instructions,
     }
-
     return jsonify({"success": True, "taskAdded": new_task})
     # don't need a flash message b/c it will show up after you press the Add button
 

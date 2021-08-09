@@ -2,3 +2,33 @@
 make sure session stores the right info  -->
 
 <!-- After logout need to reroute so it shows you're logged out (right now need to refresh) -->
+
+{% extends 'base.html' %}
+
+{% block title %}{{ user.email }} - Details{% endblock %}
+
+{% block body %}
+
+{{ today }}
+<h3><span class="material-icons">person</span>Welcome, {{ user.first_name }} {{ user.last_name }}</h3>
+<p> (add that it just says your name, or put name in navbar instead)
+
+<h4>Dogs </h4>
+
+   <ul>
+    {% for userdog in userdogs %}
+    <li>
+        <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
+
+         <!-- Need to add if userdog.primary_user is True, add an indication -->
+    </li>
+    {% else %}
+    <p>No dogs have been added yet.</p>
+    {% endfor %}
+</p>
+
+<a href="/add_dog">Add a dog</a>
+
+
+
+{% endblock %}

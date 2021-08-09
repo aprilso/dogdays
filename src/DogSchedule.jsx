@@ -7,9 +7,10 @@ export default function DogSchedule() {
   let { dogId } = useParams();
   return (
     <div>
-      <Greeting />
+      {/* <Greeting /> */}
+      
       <ViewSchedule />
-      <div>{dogId}</div>
+      <div>Dog ID: {dogId}</div>
     </div>
   );
 }
@@ -22,7 +23,7 @@ function Greeting(props) {
   //   start: date,
   //   allDay: true
   // });
-  return <div>Hello</div>;
+  // return <div>Hello</div>;
   // return <h1>Hello {props.name}</h1>;
 }
 // Need to add the existing database tasks to the calendar when you view the page - populate the existing database tasks
@@ -97,7 +98,7 @@ function AddTaskToSchedule(props) {
   const [frequency, setFrequency] = React.useState("");
   const [instructions, setInstructions] = React.useState("");
 
-  const frequencyList = ["Daily", "Weekly", "Monthly", "Yearly"];
+  const frequencyList = ["SELECT", "Daily", "Weekly", "Monthly", "Yearly"];
 
   function addNewTask() {
     fetch("/api/add-task", {
