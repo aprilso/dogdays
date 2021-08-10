@@ -7,6 +7,20 @@ h1, h2, h3, h4{
   font-family: 'Itim', cursive;
 }
 
+a {
+  color: #ff4a1c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff4a1c;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #ff4a1c;
+}
+
 p {
   font-family: 'Open Sans', sans-serif;
 }
@@ -111,6 +125,17 @@ label {
   background-repeat: no-repeat;
 }
 
+.mini-pic {
+  object-fit: contain;
+  object-position: center;
+  width: 75px;
+  height: 75px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
 .new-user {
   background-image: url("../images/dog-left-corner2.jpg");
   background-size: cover;
@@ -125,10 +150,9 @@ label {
 /* Navbar background */
 .navbar-custom-theme {
   /* background:#F23838; */
-  background: #2b2b2b;
+  background: #3d3d3d;
   /* background:	#c66d3a; */
   /* background: #F2994B; */
-  
   
 }
 
@@ -140,18 +164,19 @@ label {
 /* Color of logo when you hover on it */
 .navbar-custom-theme .navbar-brand:hover,
 .navbar-custom-theme .navbar-brand:focus {
-  color: white;
+  color:#ff4a1c;
+  text-decoration: none;
 }
 
 .navbar-custom-theme .nav-link {
-  color:white;
+  color:#FEF9F8
 }
 
 .navbar-custom-theme .nav-link:hover
 /* .navbar-custom-theme .nav-link:focus  */
 {
-  color: #F2994B;
-}
+  color: #ff4a1c;
+  text-decoration: none;
 
 /* Change border color of navbar-toggler */
 /* .navbar-custom-theme .navbar-toggler { */

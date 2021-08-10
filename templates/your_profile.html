@@ -7,30 +7,33 @@
 
 <section class="centering-content-demo container mt-4">
   {{ today }}
-  <h3><span class="material-icons">person</span>Welcome, {{ user.first_name }} {{ user.last_name }}</h3>
-  <p> (add that it just says your name, or put name in navbar instead)
+  <h3><span class="material-icons">person</span>Welcome, {{ user.first_name }}</h3>
 
   <h4>Info</h4>
-
-    <li>Email: {{ user.email }}
-    <li>Phone Number: {{ user.phone_number }}
+  Full Name: {{ user.first_name }} {{ user.last_name }}
+  <br>
+  Email: {{ user.email }}
+  <br>
+  Phone Number: {{ user.phone_number }}
 
   <p>
   <h4>Dogs </h4>
-
-    <ul>
       {% for userdog in userdogs %}
-      <li>
-          <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
+      <section class="each-dog">
+        <div class="mini-pic img-thumbnail" 
+        style="background-image: url('{{ userdog.dog.photo }}');">
+        </div>
+        <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
 
           <!-- Need to add if userdog.primary_user is True, add an indication -->
-      </li>
+
       {% else %}
       <p>No dogs have been added yet.</p>
+      </section>
       {% endfor %}
+      
   </p>
 
-  <p>[Need to add that you only see this if it's your profile]<p>
   <a href="/add_dog">Add a dog</a>
   </section>
 
