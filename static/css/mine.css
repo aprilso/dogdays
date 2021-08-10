@@ -64,7 +64,7 @@ section {
   background-image: url("../images/multipledogs.jpeg");
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  min-height: 625px;
   height: 75%;
   filter: opacity(0.9)
 }
