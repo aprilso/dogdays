@@ -324,11 +324,12 @@ def add_entry(dog_id):
     user_id = session["user_id"]
 
     entry_name = request.form.get("entry_name")
-    entry_type = request.form.get("entry_name")
+    entry_type = request.form.get("entry_type")
     time_happen = request.form.get("time_happen")
     notes = request.form.get("notes")
+    flag = request.form.get("flag")
 
-    crud.create_entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes)
+    crud.create_entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes, flag=flag)
     flash("Success! New entry has been added")
 
     return redirect(f"/dogs/{ dog_id }")

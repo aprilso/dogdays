@@ -123,10 +123,10 @@ def assign_dog_to_human(user_id, dog_id, primary_user):
 
 #### ENTRIES SECTION -----
 
-def create_entry(dog_id, user_id, entry_name, entry_type, time_happen, notes):
+def create_entry(dog_id, user_id, entry_name, entry_type, time_happen, notes, flag):
   """Creating an entry - something that happened one time"""
 
-  entry = Entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes)
+  entry = Entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes, flag=flag)
 
   db.session.add(entry)
   db.session.commit()

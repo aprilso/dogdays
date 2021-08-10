@@ -6,7 +6,7 @@
 
 
 <section class="centering-content-demo container mt-4">
-  {{ today }}
+  <!-- {{ today }} -->
   <h3><span class="material-icons">person</span>Welcome, {{ user.first_name }}</h3>
 
   <h4>Info</h4>
@@ -32,9 +32,12 @@
       </section>
       {% endfor %}
       
-  </p>
+      </p>
+      <section class="centering-content-demo container mt-4">
+        <a href="/add_dog">+ Add a dog</a>
+      </section>
 
-  <a href="/add_dog">+ Add a dog</a>
+  
   </section>
 
 {% endblock %}

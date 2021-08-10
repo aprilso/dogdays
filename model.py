@@ -112,6 +112,7 @@ class Entry(db.Model):
   entry_type = db.Column(db.String) # 9 options:Food, Training, Walk, Play, Poop, Pee, Sick, Medication, Grooming
   time_happen = db.Column(db.DateTime) 
   notes = db.Column(db.String)
+  flag = db.Column(db.String)
 
   def __repr__(self):
     return f'<Entry: dog_id={self.dog_id} user_id={self.user_id} entry_id={self.entry_id} entry_name = {self.entry_name}>'

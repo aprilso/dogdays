@@ -4,8 +4,8 @@ import os
 import json
 from random import choice, randint
 from datetime import datetime
-
 from faker import Faker
+
 fake = Faker()
 
 import crud

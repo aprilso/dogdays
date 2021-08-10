@@ -29,7 +29,10 @@
     {{ entry.time_happen }}</li>
     Recorded by {{entry.user_id}} 
     <br> Notes: {{ entry.notes }}
-    <br>
+      {% if entry.flag == 'Warning' %}
+        <p>WARNING!</p>
+        <span class="material-icons">flag</span>
+      {% endif %}
     <p> 
     {% else %} No entries have been logged 
     {% endfor %}
