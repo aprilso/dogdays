@@ -10,20 +10,20 @@
       <h3>Record a new entry</h3>
       <form action="/dogs/{{ dog.dog_id }}/entries" method="POST">
 
-        <p>
-          Entry Name<input type="text" name="entry_name">
-        </p>
-
+        <label for="entry">Entry Name</label>
+          <input type="text" name="entry_name">
+        <br>
         <label for="entry_type">Type</label>
-        <select id="entry_type" name="entry_type">
-
-          <option value="feeding">Feeding</option>
-          <option value="exercise">Exercise</option>
-          <option value="training">Training</option>
-          <option value="potty">Potty</option>
-          <option value="meds">Medication</option>
-          <option value="grooming">Grooming</option>
-        </select>
+          <select id="entry_type" name="entry_type">
+            <option value="feeding">Feeding</option>
+            <option value="exercise">Exercise</option>
+            <option value="training">Training</option>
+            <option value="potty">Potty</option>
+            <option value="meds">Medication</option>
+            <option value="grooming">Grooming</option>
+          </select>
+        
+        
 
         <p>
         <label for="time">Time Occurred:</label>
@@ -31,10 +31,9 @@
         </p>
 
         <p>
-          Notes <input type="text" name="notes">
+        <label for="notes">Notes</label><input type="text" name="notes">
         </p>
 
-       
         <button class="btn btn-lg btn-dark btn-block" type="submit">Confirm</button>
 
       </form>

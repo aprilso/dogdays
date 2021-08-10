@@ -4,33 +4,34 @@
 
 {% block body %}
 
-{{ today }}
-<h3><span class="material-icons">person</span>Welcome, {{ user.first_name }} {{ user.last_name }}</h3>
-<p> (add that it just says your name, or put name in navbar instead)
 
-<h4>Info</h4>
+<section class="centering-content-demo container mt-4">
+  {{ today }}
+  <h3><span class="material-icons">person</span>Welcome, {{ user.first_name }} {{ user.last_name }}</h3>
+  <p> (add that it just says your name, or put name in navbar instead)
 
-  <li>Email: {{ user.email }}
-  <li>Phone Number: {{ user.phone_number }}
+  <h4>Info</h4>
 
-<p>
-<h4>Dogs </h4>
+    <li>Email: {{ user.email }}
+    <li>Phone Number: {{ user.phone_number }}
 
-   <ul>
-    {% for userdog in userdogs %}
-    <li>
-        <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
+  <p>
+  <h4>Dogs </h4>
 
-         <!-- Need to add if userdog.primary_user is True, add an indication -->
-    </li>
-    {% else %}
-    <p>No dogs have been added yet.</p>
-    {% endfor %}
-</p>
+    <ul>
+      {% for userdog in userdogs %}
+      <li>
+          <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
 
-<p>[Need to add that you only see this if it's your profile]<p>
-<a href="/add_dog">Add a dog</a>
+          <!-- Need to add if userdog.primary_user is True, add an indication -->
+      </li>
+      {% else %}
+      <p>No dogs have been added yet.</p>
+      {% endfor %}
+  </p>
 
-
+  <p>[Need to add that you only see this if it's your profile]<p>
+  <a href="/add_dog">Add a dog</a>
+  </section>
 
 {% endblock %}
