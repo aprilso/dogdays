@@ -18,37 +18,36 @@
     <input type="file" name="dog-photo">
     <input type="submit">
   </form> -->
-
-  <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li>
-
-  <p> ------</p>
+<!-- 
+  <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li> -->
 
   <a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
-
+  <br>
   <a href="/dogs/{{ dog.dog_id}}/view-entries">View Entries (FIX)</a>
 
   <h4>Basics </h4>
   <li>Sex: {{ dog.sex }}
   <li>Breed: {{ dog.breed }}
-  <li>Color: {{ dog.primary_color}}
   <li>Birthday: {{ dog.dob }} 
   <li>Age: {{ dog_age }}
-  <li>Bio: {{ dog.bio }}
+  <li>Color: {{ dog.primary_color}}
 
   <!-- ASK: How to do this cleaner with loop? -->
   <!-- <p>(Update info link)</p> -->
 
 
-  <h4>Medical </h4>
-  <li>Medical Notes: {{dog.medical_info}}
+  <h4>Health and Care</h4>
+  <li>Food: {{dog.food}}
   <li>Allergies: {{dog.allergies}}
   <li>Medication: {{dog.medication}}
-  <li>Weight (lbs): {{dog.weight}}
-  <li>Food: {{dog.food}}
   <li>Microchip Number: {{dog.microchip_num}}
+  <li>Weight (lbs): {{dog.weight}}
+  <li>Vet Info: {{dog.medical_info}}
 
-  <h4>Miscellaneous</h4>
-  <li>Notes: {{dog.misc_notes}}
+  <h4>About</h4>
+  <li>Bio: {{ dog.bio }}
+
+  <li>Misc Notes: {{dog.misc_notes}}
 
   <p>
     <h4>Caretakers</h4>

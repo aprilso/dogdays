@@ -7,11 +7,12 @@
 <section class="forms-demo container mt-4">
   <div class="row">
     <div class="column bordered">
-      <h3>Create a new dog</h3>
+      <h2>Create a new dog</h2>
+      <hr>
       <form action="/add_dog" method="POST" enctype="multipart/form-data">
-
+        <h4>Basics</h4>
         <p>
-          Dog's name* <input type="text" name="dog_name">
+          <label for="dog_name">Dog's name*</label> <input type="text" name="dog_name">
         </p>
 
         <label for="sex">Sex</label>
@@ -21,53 +22,64 @@
         </select>
 
         <p>
-          Date of Birth 
-          <i>(YYYY-MM-DD)</i>
-          <br>
-          <input type="datetime" name="dob">
+          <label for="dob">Date of Birth</label>
+          <input type="date" name="dob">
         </p>
 
         <p>
-          Breed <input type="text" name="breed">
+          <label for="breed">Breed</label> <input type="text" name="breed">
         </p>
 
         <p>
-          Primary Color <input type="text" name="primary_color">
+          <label for="color">Primary Color</label><input type="text" name="primary_color">
+        </p>
+        <hr>
+        <h4>Health and Care</h4>
+
+        <p>
+          <label for="food">Food</label>
+          <!-- <input type="text" name="food"> -->
+          <textarea id="food" name="food" placeholder="Brand and serving size" rows="2" cols="50"></textarea>
         </p>
 
         <p>
-          Bio <input type="text" name="bio">
+          <label for="allergies">Allergies</label><input type="text" name="allergies">
         </p>
 
         <p>
-          Microchip Number <input type="text" name="microchip_num">
+          <label for="microchip">Microchip Number</label><input type="text" name="microchip_num">
         </p>
 
         <p>
-          Medication <input type="text" name="medication">
+          <label for="medication">Medication</label> <input type="text" name="medication">
         </p>
 
         <p>
-          Medical Info <input type="text" name="medical_info">
+          <label for="weight">Weight (lbs)</label><input type="integer" name="weight"> 
         </p>
 
         <p>
-          Allergies <input type="text" name="allergies">
+          <label for="vet_info">Vet Info</label>
+          <textarea id="medical_info" name="medical_info" placeholder="Name, hospital, phone number" rows="3" cols="50"></textarea>
+          <!-- <small class="form-text text-muted">
+            Name, hospital, phone number
+          </small> -->
+        </p>
+        <hr>
+        <h4>About</h4>
+        <p>
+          <label for="bio">Bio</label><br>
+          <!-- <input type="text" name="bio"> -->
+          <textarea id="bio" name="bio" placeholder="Tell us about your dog's personality" rows="3" cols="50"></textarea>
         </p>
 
         <p>
-          Weight <input type="integer" name="weight"> 
+          <label for="misc">Miscellaneous Notes</label>
+          <!-- <input type="text" name="misc_notes">  -->
+          <textarea id="misc_notes" name="misc_notes" placeholder="Behaviors, energy levels, playstyle, fears, etc " rows="3" cols="50"></textarea>
         </p>
 
-        <p>
-          Food <input type="text" name="food"> 
-        </p>
-
-        <p>
-          Miscellaneous Notes <input type="text" name="misc_notes"> 
-        </p>
-
-        <p>Photo
+        <p><label for="photo">Photo</photo>
         <!-- <form action="/upload-dog-photo" method="post" > -->
         <input type="file" name="dog-photo">
         </p>
@@ -81,14 +93,16 @@
     </div>
  
     <div class="column bordered">
-      <h3>Add an existing dog</h3>
-
-      <p> Add by dog id </p>
-
+      <h2>Add an existing dog</h2>
+      <hr>
 
       <form action="/lookup_dog" method="POST">
       <p>
-          Dog ID <input type="integer" name="dog_id">
+        <label for="dog_id">Dog ID</label> <input type="integer" name="dog_id">
+        <br>
+        <small class="form-text text-muted">
+          To add an existing dog, get the Dog ID from their caretaker.
+        </small>
       </p>
       <p>
         <button class="btn btn-lg btn-dark btn-block" type="submit">Add Dog</button>
