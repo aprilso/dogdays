@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% block title %} {% endblock %}
+
+{% block body %}
+
+
+<h3><span class="material-icons">pets</span>{{ dog.dog_name }}'s Entries</h3>
+
+
+<div class="center-cropped img-thumbnail" 
+     style="background-image: url('{{ dog.photo }}');">
+</div>
+
+
+
+<p> ------</p>
+
+<a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
+[Link back to dog's profile]
+
+<p>
+  <h4>Entries</h4>
+  <p> (Add links to sort by time, type, user_id)
+    (sort by )
+
+    {% for entry in entries|reverse%}
+    <li><h4>{{ entry.entry_name }}</h4>
+    {{ entry.time_happen }}</li>
+    By {{ entry.user_id }}
+    <br> Notes: {{ entry.notes }}
+    <br>
+    <p> 
+    {% else %} No entries have been logged 
+    {% endfor %}
+<p>
+
+
+
+
+
+
+
+{% endblock body%}
+
+
+
+
+
+      

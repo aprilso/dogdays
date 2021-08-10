@@ -303,6 +303,47 @@ def show_image():
 #     return redirect(url_for("show_image", imgURL=img_url))
 
 
+##### ENTRY SECTION
+
+@app.route("/dogs/<dog_id>/entries")
+def new_entries(dog_id):
+    """display page to add new entries"""
+
+    dog = crud.get_dog_by_id(dog_id)
+    userdogs = crud.get_user_by_dog(dog_id)
+    session["dog_id"] = dog_id
+
+    return render_template("/new_entry.html", dog=dog, userdogs=userdogs)
+
+
+@app.route("/dogs/<dog_id>/entries", methods=["POST"])
+def add_entry(dog_id):
+    """Add a new entry to the database"""
+
+    # dog_id = session["dog_id"] #check that it's stored in the session
+    user_id = session["user_id"]
+
+    entry_name = request.form.get("entry_name")
+    entry_type = request.form.get("entry_name")
+    time_happen = request.form.get("time_happen")
+    notes = request.form.get("notes")
+
+    crud.create_entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes)
+    flash("Success! New entry has been added")
+
+    return redirect(f"/dogs/{ dog_id }")
+
+@app.route("/dogs/<dog_id>/view-entries")
+def view_entries(dog_id):
+    """display page to view existing entries"""
+
+    dog = crud.get_dog_by_id(dog_id)
+    userdogs = crud.get_user_by_dog(dog_id)
+    entries = crud.get_entries_by_dog(dog_id)
+    # session["dog_id"] = dog_id
+
+    return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries)
+
 
 
 

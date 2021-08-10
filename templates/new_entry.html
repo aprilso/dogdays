@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}New Dog{% endblock %}
+
+{% block body %}
+
+
+<section class="forms-demo container mt-4">
+  <div class="row">
+    <div class="column bordered">
+      <h3>Record a new entry</h3>
+      <form action="/dogs/{{ dog.dog_id }}/entries" method="POST">
+
+        <p>
+          Entry Name<input type="text" name="entry_name">
+        </p>
+
+        <label for="entry_type">Type</label>
+        <select id="entry_type" name="entry_type">
+
+          <option value="feeding">Feeding</option>
+          <option value="exercise">Exercise</option>
+          <option value="training">Training</option>
+          <option value="potty">Potty</option>
+          <option value="meds">Medication</option>
+          <option value="grooming">Grooming</option>
+        </select>
+
+        <p>
+          Time Occurred
+          <i>(YYYY-MM-DD) (time)</i>
+          <br>
+          <input type="datetime" name="time_happen">
+        </p>
+
+        <p>
+          Notes <input type="text" name="notes">
+        </p>
+
+       
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Confirm</button>
+
+      </form>
+    </div>
+ 
+  </div>
+</section>
+
+
+{% endblock body %}

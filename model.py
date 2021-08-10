@@ -89,6 +89,41 @@ class UserDog (db.Model):
 #relationships in sqlalchemy do use foreign keys
 
 
+###### NEWER ENTRY VERSION 
+
+class Entry(db.Model):
+  """one time events"""
+
+  __tablename__ = "entries"
+
+  entry_id = db.Column(db.Integer,
+                  autoincrement=True,
+                  primary_key=True)
+
+  dog_id = db.Column(db.Integer,
+            db.ForeignKey('dogs.dog_id'),
+            nullable=False)
+
+  user_id = db.Column(db.Integer,
+            db.ForeignKey('users.user_id'),
+            nullable=False)
+
+  entry_name = db.Column(db.String)
+  entry_type = db.Column(db.String) # 9 options:Food, Training, Walk, Play, Poop, Pee, Sick, Medication, Grooming
+  time_happen = db.Column(db.DateTime) 
+  notes = db.Column(db.String)
+
+  def __repr__(self):
+    return f'<Entry: dog_id={self.dog_id} user_id={self.user_id} entry_id={self.entry_id} entry_name = {self.entry_name}>'
+
+
+
+
+
+
+###### OLDER TASK VERSION 
+
+
 class Task(db.Model): # simple Task version for testing
   """Simplified Task class for testing"""
 

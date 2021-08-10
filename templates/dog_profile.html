@@ -21,6 +21,12 @@
 
 <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li>
 
+<p> ------</p>
+
+<a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
+
+<a href="/dogs/{{ dog.dog_id}}/view-entries">View Entries (FIX)</a>
+
 <h4>Basics </h4>
 <li>Sex: {{ dog.sex }}
 <li>Breed: {{ dog.breed }}
@@ -61,6 +67,10 @@
 </p>
 <p>Dog ID: {{dog.dog_id}}</p>
 <i>use this to add a dog </i>
+
+
+
+
 
 
 {% endblock body%}

@@ -1,6 +1,6 @@
 """CRUD operations (Create Read Update Delete) """
 
-from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db
+from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db, Entry
 from datetime import datetime, date
 
 def create_user(first_name, last_name, email, password, phone_number, icon):
@@ -120,6 +120,40 @@ def assign_dog_to_human(user_id, dog_id, primary_user):
 #             years -= 1
 #     return dog_age = '%sy %smo'% (years, months)
 
+
+#### ENTRIES SECTION -----
+
+def create_entry(dog_id, user_id, entry_name, entry_type, time_happen, notes):
+  """Creating an entry - something that happened one time"""
+
+  entry = Entry(dog_id=dog_id, user_id=user_id, entry_name=entry_name, entry_type=entry_type, time_happen=time_happen, notes=notes)
+
+  db.session.add(entry)
+  db.session.commit()
+
+  return entry
+
+
+def delete_entry(entry_id):
+  """delete a selected entry"""
+
+  Entry.query.filter(Entry.entry_id == entry_id).delete()
+  db.session.commit()
+
+
+def sort_entry_by_type(entry_type):
+  """return display entries by type"""
+  sorted_entries = Entry.query.filter(Entry.entry_type == entry_type).all()
+  
+  return sorted_entries
+
+def get_entries_by_dog(dog_id):
+  """Get all the entries for a dog"""
+  return Entry.query.filter(Entry.dog_id == dog_id).all()
+
+
+
+
 #TASKS SECTION ----
 
 # TASKS - SIMPLE VERSION
@@ -132,7 +166,6 @@ def create_task(dog_id, task_name, frequency, instructions):
   db.session.commit()
 
   return task
-
 
 # TASKS -COMPLICATED VERSION
 # def create_task(dog_id, task_name, task_created_time, frequency, task_scheduled_time, flexible, task_scheduled_day, 

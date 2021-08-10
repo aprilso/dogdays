@@ -1,6 +1,6 @@
 body {
   background-color: #FEF9F8;
-
+  /* background-color: #f5f5f5; */
 }
 
 h1, h3, h4{
@@ -112,7 +112,7 @@ label {
 }
 
 .new-user {
-  background-image: url("../images/dog-left-corner.jpg");
+  background-image: url("../images/dog-left-corner2.jpg");
   background-size: cover;
 }
 
