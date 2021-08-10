@@ -32,8 +32,8 @@
 
 <body class="text-center new-user">
   <form class="form-signin" action="/users" method="POST">
-    <img class="mb-4" src="static/images/DogDaysLogo_CreamRed.svg" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Create a new account</h1>
+    <img class="mb-4" src="static/images/DogDaysLogo_RedOrange.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3">Create a new account</h1>
 
     <label for="first_name" class="sr-only">First Name</label>
     <input type="text" name="first_name" class="form-control" placeholder="First Name" required autofocus>
@@ -51,16 +51,13 @@
     <input type="password" name="password" class="form-control" placeholder="Password" required>
 
     <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
-    <!-- <input type="submit"> -->
-    
-    <!-- <p class="mt-5 mb-3 text-muted"> Don't have an account yet? <br>
-      <a href="/new_user">Create an account</a> 
-      <br>
-       -->
+
+    <p class="mt-5 mb-3 text-muted">Already have an account? <br>
+      <a href="/login">Login here</a></p>
+
   </form>
 </body>
 
-<p class="mt-5 mb-3 text-muted">Already have an account? <br>
-  <a href="/login">Login here</a></p>
+
 
 {% endblock body %}

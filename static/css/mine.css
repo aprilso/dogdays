@@ -4,7 +4,8 @@ body {
 }
 
 h1, h2, h3, h4{
-  font-family: 'Itim', cursive;
+  font-family: 'Nunito', Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif;
+  font-weight: bold;
 }
 
 a {
@@ -26,8 +27,8 @@ p {
 }
 
 .logo-type {
-  font-family: Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif; 
-  font-size: 24px; 
+  font-family: 'Nunito', Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif; 
+  font-size: 26px; 
   font-style: normal; 
   font-variant: normal; 
   font-weight: 700; 
@@ -57,8 +58,17 @@ section {
   min-height: 625px;
   height: 75%;
   filter: opacity(0.9)
-
 }
+
+.footer-jumbotron {
+  background-image: url("../images/multipledogs.jpeg");
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  height: 75%;
+  filter: opacity(0.9)
+}
+
 
 .column {
   float: left;
@@ -166,26 +176,29 @@ label {
 /* Color of logo when you hover on it */
 .navbar-custom-theme .navbar-brand:hover,
 .navbar-custom-theme .navbar-brand:focus {
-  color:#ff4a1c;
   color:#3d3d3d;
   text-decoration: none;
 }
 
 .navbar-custom-theme .nav-link {
-  color:#FEF9F8;
   color:#ff4a1c;
 }
 
 .navbar-custom-theme .nav-link:hover
 /* .navbar-custom-theme .nav-link:focus  */
 {
-  color: #ff4a1c;
+  color:#3d3d3d;
   text-decoration: none;
+}
 
 /* Change border color of navbar-toggler */
 /* .navbar-custom-theme .navbar-toggler { */
 /*   border-color: white; */ 
-/* } */
+
+.navbar-custom-theme .navbar-brand {
+  background-image: url("static/images/DogDaysLogo_RedOrange.svg");
+}
+
 
 /* You can even edit the toggler icon (see example below)! Here are
  * the properties you can edit:
@@ -210,6 +223,9 @@ label {
 /* .navbar-custom-theme .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(76, 81, 141)' stroke-width='1' stroke-miterlimit='10' d='M4 12h22 M4 17h22 '/%3E%3C/svg%3E");
 } */
+
+
+
 
 .static-height {
   height: 400px;
