@@ -150,8 +150,9 @@ label {
 
 /* Navbar background */
 .navbar-custom-theme {
+  background: #fef9f8;
   /* background:#F23838; */
-  background: #3d3d3d;
+  /* background: #3d3d3d; */
   /* background:	#c66d3a; */
   /* background: #F2994B; */
   
@@ -159,18 +160,20 @@ label {
 
 /* Color of the logo */
 .navbar-custom-theme .navbar-brand {
-  color:#F2EAE4;
+  color:#ff4a1c;
 }
 
 /* Color of logo when you hover on it */
 .navbar-custom-theme .navbar-brand:hover,
 .navbar-custom-theme .navbar-brand:focus {
   color:#ff4a1c;
+  color:#3d3d3d;
   text-decoration: none;
 }
 
 .navbar-custom-theme .nav-link {
-  color:#FEF9F8
+  color:#FEF9F8;
+  color:#ff4a1c;
 }
 
 .navbar-custom-theme .nav-link:hover
@@ -204,9 +207,9 @@ label {
  *       12h22 --- 12 is where to start drawing the line, h22 is how long it
  *                 should be
  */
-.navbar-custom-theme .navbar-toggler-icon {
+/* .navbar-custom-theme .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(76, 81, 141)' stroke-width='1' stroke-miterlimit='10' d='M4 12h22 M4 17h22 '/%3E%3C/svg%3E");
-}
+} */
 
 .static-height {
   height: 400px;
