@@ -16,23 +16,26 @@
   <br>
   Phone Number: {{ user.phone_number }}
 
-  <p>
+ 
   <h4>Dogs </h4>
-      {% for userdog in userdogs %}
-      <section class="each-dog">
-        <div class="mini-pic img-thumbnail" 
-        style="background-image: url('{{ userdog.dog.photo }}');">
-        </div>
-        <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
-
-          <!-- Need to add if userdog.primary_user is True, add an indication -->
-
-      {% else %}
-      <p>No dogs have been added yet.</p>
-      </section>
-      {% endfor %}
+    <div class="row">
       
-      </p>
+      {% for userdog in userdogs %}
+      <div class="col-md-2">
+        
+          <div class="mini-pic img-thumbnail" 
+          style="background-image: url('{{ userdog.dog.photo }}');">
+          </div>
+          <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
+
+        
+      </div>
+        {% else %}
+        <p>No dogs have been added yet.</p>
+        
+        {% endfor %}
+      
+    </div>
       <section class="centering-content-demo container mt-4">
         <a href="/add_dog">+ Add a dog</a>
       </section>

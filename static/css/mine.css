@@ -28,12 +28,17 @@ p {
 
 .logo-type {
   font-family: 'Nunito', Arial Rounded MT Bold, Helvetica Rounded, Arial, sans-serif; 
-  font-size: 26px; 
+  /* font-size: 30px;  */
   font-style: normal; 
   font-variant: normal; 
   font-weight: 700; 
-  line-height: 26.4px; 
+  line-height: 30px; 
   display: inline-block;
+}
+
+p.logo-type {
+  margin: 0 0 0 0; 
+  
 }
 
 img, svg {
@@ -195,9 +200,9 @@ label {
 /* .navbar-custom-theme .navbar-toggler { */
 /*   border-color: white; */ 
 
-.navbar-custom-theme .navbar-brand {
-  background-image: url("static/images/DogDaysLogo_RedOrange.svg");
-}
+/* .navbar-custom-theme .navbar-brand {
+  background-image: url("/static/images/DogDaysLogo_RedOrange.svg");
+} */
 
 
 /* You can even edit the toggler icon (see example below)! Here are
@@ -230,4 +235,8 @@ label {
 .static-height {
   height: 400px;
   background: linear-gradient(#fff6e6, #ffc9e4, #fcc5e8);
+}
+
+.material-icons {
+  font-size: 36px;
 }
