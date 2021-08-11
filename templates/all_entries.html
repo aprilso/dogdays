@@ -1,11 +1,10 @@
-
 {% extends 'base.html' %}
 {% block title %} {% endblock %}
 
 {% block body %}
 
 <section class="centering-content-demo container mt-4">
-  <h3><span class="material-icons d-inline-block align-bottom" size=24px >event</span> {{ dog.dog_name }}'s Day</h3>
+  <h3><span class="material-icons d-inline-block align-bottom">event</span> {{ dog.dog_name }}'s Days</h3>
 
 
   <div class="center-cropped img-thumbnail" 
@@ -15,10 +14,23 @@
   <br>
 
   <a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
-  [Link back to dog's profile]
+  <br>
+  <a href="/dogs/{{ dog.dog_id}}"> Back to profile</a>
 
-  <p>
-    <h4>Entries</h4>
+
+  <div class="row">
+    <div class="column bordered">
+      <h3>Today</h3>
+
+
+      {{ today_entries }}
+
+     
+
+    </div>
+
+    <div class="column bordered">
+    <h3>History</h3>
     <p> (Add links to sort by time, type, user_id)
       (sort by )
 
@@ -29,12 +41,14 @@
         {% endif %}
         </h4> 
       {{ entry.time_happen }}</li>
+      <br>{{ entry.entry_type }}
       <br>Recorded by {{entry.user_id}} 
       <br> Notes: {{ entry.notes }}
       <p> 
       {% else %} No entries have been logged 
       {% endfor %}
-  <p>
+      
+      </div>
 
 </section>
 

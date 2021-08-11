@@ -96,6 +96,21 @@ section {
   column-rule: 2px double;
 } */
 
+.bordered-orange{
+  border: thin solid;
+  color:#ff4a1c;
+  border-radius: 5px;
+  margin: 2%;
+  padding: 2%;
+}
+
+.orange {
+  color:#ff4a1c;
+}
+
+.padded {
+  padding: 2%;
+}
 
 /* FORM settings */
 
@@ -144,8 +159,8 @@ label {
 .mini-pic {
   object-fit: contain;
   object-position: center;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -157,7 +172,18 @@ label {
   background-size: cover;
 }
 
+.footer {
+  position: relative;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+}
 
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
 
 /* FROM the best-of-bootstrap.css */
 
@@ -166,6 +192,10 @@ label {
 /* Navbar background */
 .navbar-custom-theme {
   background: #fef9f8;
+  /* background: #f8efed; */
+
+  border-bottom: thin solid #ff4a1c;
+  
   /* background:#F23838; */
   /* background: #3d3d3d; */
   /* background:	#c66d3a; */
@@ -176,6 +206,7 @@ label {
 /* Color of the logo */
 .navbar-custom-theme .navbar-brand {
   color:#ff4a1c;
+  
 }
 
 /* Color of logo when you hover on it */
@@ -194,6 +225,7 @@ label {
 {
   color:#3d3d3d;
   text-decoration: none;
+  
 }
 
 /* Change border color of navbar-toggler */

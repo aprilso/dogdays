@@ -226,7 +226,8 @@ def new_dog_to_user():
     crud.assign_dog_to_human(user_id, dog_id, primary_user)
     flash("Success! New dog has been added with you as primary user")
 
-    return redirect("/")
+    # return redirect("/")
+    return redirect(f"/users/{ user_id }")
 
 
 @app.route("/lookup_dog", methods=["GET"])
@@ -264,7 +265,20 @@ def add_existing_dog():
 
     flash("Success! You have added this dog to your dogs!")
 
-    return redirect("/")
+    return redirect(f"/users/{ user_id }")
+
+@app.route("/dogs/<dog_id>/remove", methods=["DELETE"])
+def remove_dog(user_id, dog_id):
+    """removes an existing dog from a user"""
+
+    user_id = session["user_id"]
+
+    crud.remove_dog(user_id, dog_id)
+
+    flash("Dog has been removed from your care")
+
+    return redirect(f"/users/{ user_id }")
+
 
 
 
@@ -344,7 +358,9 @@ def view_entries(dog_id):
     entries = crud.get_entries_by_dog(dog_id)
     # session["dog_id"] = dog_id
 
-    return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries, user=user)
+    today_entries = crud.get_dog_entries_today(dog_id)
+
+    return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries, user=user, today_entries=today_entries)
 
 
 

@@ -99,6 +99,13 @@ def assign_dog_to_human(user_id, dog_id, primary_user):
 
   return userdog
 
+def remove_dog(user_id, dog_id):
+  """Remove a dog from a user's care""" #check if it works
+
+  UserDog.query.filter(UserDog.user_id == user_id, UserDog.dog_id == dog_id).delete()
+  db.session.commit()
+
+
 # DELETE LATER
 # def dog_age(dog_id):
 #   """return the dog's age"""
@@ -144,12 +151,36 @@ def delete_entry(entry_id):
 def sort_entry_by_type(entry_type):
   """return display entries by type"""
   sorted_entries = Entry.query.filter(Entry.entry_type == entry_type).all()
-  
   return sorted_entries
+
 
 def get_entries_by_dog(dog_id):
   """Get all the entries for a dog"""
   return Entry.query.filter(Entry.dog_id == dog_id).all()
+
+
+def get_dog_entries_today(dog_id):
+  """Get all the entries for a dog that occurred today""" #not working
+
+  this_day = date.today() #but want just by year, month, day
+  year = this_day.year
+  month = this_day.month
+  day = this_day.day
+
+  entry_time = Entry.query.filter(Entry.time_happen == this_day).all()
+
+  # , Entry.time_happen.month == month, Entry.time_happen.day == day).all()
+  # entry_match = entry_time.filter(Entry.time_happen.day == day)
+  # today_year = datetime.now().year
+  # today_month = datetime.now().month
+  
+  dog_entries = Entry.query.filter(Entry.dog_id == dog_id).all()
+  # today_entries = Entry.query.filter(Entry.time_happen == entry_time).all()
+  # return entry_time
+
+  #time_happen in the db is a datetime, but doesn't have a .year, .month or .day method
+  
+  return this_day
 
 
 
