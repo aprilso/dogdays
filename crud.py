@@ -3,6 +3,10 @@
 from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db, Entry
 from datetime import datetime, date
 
+from sqlalchemy import Date, DATE, extract #added
+
+
+
 def create_user(first_name, last_name, email, password, phone_number, icon):
   """Create and return a new user."""
 
@@ -156,31 +160,46 @@ def sort_entry_by_type(entry_type):
 
 def get_entries_by_dog(dog_id):
   """Get all the entries for a dog"""
-  return Entry.query.filter(Entry.dog_id == dog_id).all()
 
+  # return Entry.query.filter(Entry.dog_id == dog_id).order_by(Entry.time_happen) #This is good!
+
+  return Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen)
+  # ADD ALL THE COLUMNS YOU NEED IN ADD COLUMNS
 
 def get_dog_entries_today(dog_id):
   """Get all the entries for a dog that occurred today""" #not working
 
   this_day = date.today() #but want just by year, month, day
+
   year = this_day.year
   month = this_day.month
   day = this_day.day
 
   entry_time = Entry.query.filter(Entry.time_happen == this_day).all()
 
+  # entry_time = Entry.query.filter(date_format(Entry.time_happen,”Y-m-d”) == this_day).all()
+
+  # entry_time = Entry.query.filter(datetime.strptime(Entry.time_happen, '%Y-%m-%d') == this_day).all()
+  # .filter(Entry.dog_id == dog_id).all()
+
+  # entry_time = Entry.query.filter(DATE((Entry.time_happen) == this_day).all()
+
+
+  # entry_time = Entry.query.filter(extract('month', Entry.time_happen) == datetime.today().month).all
+
+  
   # , Entry.time_happen.month == month, Entry.time_happen.day == day).all()
   # entry_match = entry_time.filter(Entry.time_happen.day == day)
   # today_year = datetime.now().year
   # today_month = datetime.now().month
   
-  dog_entries = Entry.query.filter(Entry.dog_id == dog_id).all()
+  # dog_entries = Entry.query.filter(Entry.dog_id == dog_id).all()
   # today_entries = Entry.query.filter(Entry.time_happen == entry_time).all()
   # return entry_time
 
   #time_happen in the db is a datetime, but doesn't have a .year, .month or .day method
   
-  return this_day
+  return entry_time
 
 
 

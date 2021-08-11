@@ -355,6 +355,7 @@ def view_entries(dog_id):
     dog = crud.get_dog_by_id(dog_id)
     userdogs = crud.get_user_by_dog(dog_id)
     user = session["user_id"]
+
     entries = crud.get_entries_by_dog(dog_id)
     # session["dog_id"] = dog_id
 

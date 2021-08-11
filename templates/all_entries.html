@@ -25,6 +25,7 @@
 
       {{ today_entries }}
 
+
      
 
     </div>
@@ -34,7 +35,8 @@
     <p> (Add links to sort by time, type, user_id)
       (sort by )
 
-      {% for entry in entries|reverse%}
+      {% for entry in entries|reverse %}
+
       <h4>{{ entry.entry_name }}
         {% if entry.flag == 'Warning' %}
           <span class="material-icons">flag</span>
@@ -42,10 +44,13 @@
         </h4> 
       {{ entry.time_happen }}</li>
       <br>{{ entry.entry_type }}
-      <br>Recorded by {{entry.user_id}} 
+      <br>Recorded by {{ entry.first_name }} 
+      
       <br> Notes: {{ entry.notes }}
       <p> 
       {% else %} No entries have been logged 
+      
+
       {% endfor %}
       
       </div>
