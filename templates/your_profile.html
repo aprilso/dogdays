@@ -8,39 +8,46 @@
 <section class="centering-content-demo container mt-4">
   <!-- {{ today }} -->
   <h3><span class="material-icons">person</span> Welcome, {{ user.first_name }}</h3>
-
-  <h4>Info</h4>
-  Full Name: {{ user.first_name }} {{ user.last_name }}
+  <div class="row">
+    <div class="column">
+    <h4>Info</h4>
+    Full Name: {{ user.first_name }} {{ user.last_name }}
+    <br>
+    Email: {{ user.email }}
+    <br>
+    Phone Number: {{ user.phone_number }}
+    </div>
+  </div>
   <br>
-  Email: {{ user.email }}
-  <br>
-  Phone Number: {{ user.phone_number }}
-
  
+
+
+  
   <h4>Dogs </h4>
     <div class="row">
       
       {% for userdog in userdogs %}
-      <div class="col-md-2">
+      <div class="col-md-2 ">
         
           <div class="mini-pic img-thumbnail" 
           style="background-image: url('{{ userdog.dog.photo }}');">
           </div>
           <a href="/dogs/{{ userdog.dog.dog_id }}">{{ userdog.dog.dog_name }}</a>
-
-        
+   
       </div>
         {% else %}
         <p>No dogs have been added yet.</p>
         
         {% endfor %}
-      
     </div>
+
       <section class="centering-content-demo container mt-4">
         <a href="/add_dog">+ Add a dog</a>
       </section>
 
-  
+  </div
+
+
   </section>
 
 {% endblock %}
