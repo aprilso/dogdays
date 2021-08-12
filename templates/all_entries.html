@@ -26,8 +26,10 @@
     
 
       {% for entry in entries|reverse %}
-      <div class="col-1">
-        <img class="table-icon" src= "/static/images/training.svg">
+      <div class="col-6 table-icon">
+        <!-- <img src= "/static/images/training.svg" alt="{{ entry.entry_type }}"> -->
+        <img src= "/static/images/{{ entry.entry_type }}.svg" alt="{{ entry.entry_type }}">
+        <p>{{ entry.entry_type }}</p>
       </div>
 
       
@@ -35,13 +37,10 @@
           {% if entry.flag == 'Warning' %}
             <span class="material-icons" style="color:#ff4a1c;">flag</span>
           {% endif %}
-          </h5> 
-        {{ entry.time_happen }} with {{ entry.first_name }} 
-        <br>{{ entry.entry_type }}
+        </h5> 
+        {{ entry.time_happen }} 
+        <br>With {{ entry.first_name }} 
         
-        <!-- <img src= "{{ entry.entry_type }}.svg" width="50px"> -->
-        
-  
         <br><i>{{ entry.notes }}</i>
         <hr>
         <p> 
