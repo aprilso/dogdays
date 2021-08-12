@@ -146,7 +146,7 @@ def create_entry(dog_id, user_id, entry_name, entry_type, time_happen, notes, fl
 
 
 def delete_entry(entry_id):
-  """delete a selected entry"""
+  """delete a selected entry""" #need to check if it works
 
   Entry.query.filter(Entry.entry_id == entry_id).delete()
   db.session.commit()
@@ -164,7 +164,8 @@ def get_entries_by_dog(dog_id):
   # return Entry.query.filter(Entry.dog_id == dog_id).order_by(Entry.time_happen) #This is good!
 
   return Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen)
-  # ADD ALL THE COLUMNS YOU NEED IN ADD COLUMNS
+  # ADD ALL THE COLUMNS YOU NEED IN ADD_COLUMNS
+
 
 def get_dog_entries_today(dog_id):
   """Get all the entries for a dog that occurred today""" #not working

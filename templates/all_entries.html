@@ -20,18 +20,18 @@
 
   <div class="row">
 
-    <div class="col-8 bordered">
-    <h3>History</h3>
-    <p> (Add links to sort by time, type, user_id)
-      (sort by )
+    <div class="col-7 bordered">
+    <h3>Log</h3>
+    <hr>
+    
 
       {% for entry in entries|reverse %}
 
-      <h4>{{ entry.entry_name }}
+      <h5>{{ entry.entry_name }}
         {% if entry.flag == 'Warning' %}
           <span class="material-icons" style="color:#ff4a1c;">flag</span>
         {% endif %}
-        </h4> 
+        </h5> 
       {{ entry.time_happen }}</li>
       <br>{{ entry.entry_type }}
       <br>Recorded by {{ entry.first_name }} 
@@ -41,17 +41,35 @@
       <p> 
       {% else %} No entries have been logged 
       
-
       {% endfor %}
       
       </div>
 
-      <div class="col-3 bordered">
-        <h3>Flagged</h3>
+      <div class="col-4 bordered">
+        <h3 class="orange">Flagged</h3>
   
-  
+        <hr>
+
+        {% for entry in entries|reverse %}
+          {% if entry.flag == 'Warning' %}
+        <h5>{{ entry.entry_name }}
+          
+            <span class="material-icons" style="color:#ff4a1c;">flag</span>
+          </h5> 
+          {{ entry.time_happen }}</li>
+          <br>{{ entry.entry_type }}
+          <br>Recorded by {{ entry.first_name }} 
+        
+          <br> Notes: {{ entry.notes }}
+        {% endif %}
+          
+          <p> 
+        {% else %} No entries have been flagged. 
+        
+        {% endfor %}
+            
+        <hr>
         {{ today_entries }}
-  
   
       </div>
 

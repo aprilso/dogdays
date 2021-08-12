@@ -357,9 +357,10 @@ def view_entries(dog_id):
     user = session["user_id"]
 
     entries = crud.get_entries_by_dog(dog_id)
-    # session["dog_id"] = dog_id
 
     today_entries = crud.get_dog_entries_today(dog_id)
+
+    
 
     return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries, user=user, today_entries=today_entries)
 
