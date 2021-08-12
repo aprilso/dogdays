@@ -17,7 +17,7 @@ import cloudinary.uploader
 from cloudinary_secrets import CLOUDINARY_KEY, CLOUDINARY_SECRET
 from jinja2 import StrictUndefined
 from time import sleep
-from datetime import datetime, date 
+from datetime import datetime, date, timedelta
 
 
 app = Flask(__name__)
@@ -358,11 +358,36 @@ def view_entries(dog_id):
 
     entries = crud.get_entries_by_dog(dog_id)
 
+    #Sorting entries by date
     today_entries = crud.get_dog_entries_today(dog_id)
 
-    
+    today = datetime.today()
 
-    return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries, user=user, today_entries=today_entries)
+    today_strip = datetime.now().strftime("%m/%d/%Y")
+
+    display_today = date.today()
+
+    dates_list = []
+    day_dict = {}
+
+    for day in range(5):
+        d = today-timedelta(days = day)
+        
+        # new_day_entries = crud.get_dog_entries_by_day(dog_id, d)
+        #test_day = d.strftime("%m/%d/%Y")
+
+        # dates_list.append(d.strftime("%m/%d/%Y"))
+        
+        day_dict[d.strftime("%Y-%m-%d")] = crud.get_dog_entries_by_day(dog_id, d)
+
+  
+
+   
+    
+    return render_template("/all_entries.html", dog=dog, userdogs=userdogs, entries=entries, 
+                                                user=user, today_entries=today_entries, today=today, 
+                                                display_today=display_today, today_strip=today_strip, dates_list=dates_list,
+                                                day_dict=day_dict)
 
 
 

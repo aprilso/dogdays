@@ -1,9 +1,9 @@
 """CRUD operations (Create Read Update Delete) """
 
 from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db, Entry
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
-from sqlalchemy import Date, DATE, extract #added
+from sqlalchemy import cast, Date #added
 
 
 
@@ -168,7 +168,7 @@ def get_entries_by_dog(dog_id):
 
 
 def get_dog_entries_today(dog_id):
-  """Get all the entries for a dog that occurred today""" #not working
+  """Get all the entries for a dog that occurred today""" 
 
   this_day = date.today() #but want just by year, month, day
 
@@ -185,9 +185,7 @@ def get_dog_entries_today(dog_id):
 
   # entry_time = Entry.query.filter(DATE((Entry.time_happen) == this_day).all()
 
-
   # entry_time = Entry.query.filter(extract('month', Entry.time_happen) == datetime.today().month).all
-
   
   # , Entry.time_happen.month == month, Entry.time_happen.day == day).all()
   # entry_match = entry_time.filter(Entry.time_happen.day == day)
@@ -199,9 +197,43 @@ def get_dog_entries_today(dog_id):
   # return entry_time
 
   #time_happen in the db is a datetime, but doesn't have a .year, .month or .day method
-  
-  return entry_time
 
+  #############
+  # entry_test = Entry.query.filter(cast(Entry.time_happen, Date) == date.today()).all() #needs to import sqlalchemy Date
+
+
+  # test_result = Entry.query.filter((Entry.time_happen+timedelta(days=1)) > datetime.now())
+  
+  past_entries = Entry.query.filter(Entry.time_happen +timedelta(days=1) <= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
+  #returns all the entries that happened before today, just for this dog
+  today_entries = Entry.query.filter(Entry.time_happen +timedelta(days=1) >= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
+  #returns all the entries just for today
+  join_tables = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen)
+
+  today_entries_joined = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.time_happen +timedelta(days=1) >= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
+
+
+  #need to do something that will sort by day, for loop around?
+
+  return today_entries_joined
+
+def get_dog_entries_past(dog_id):
+  """Get all the entries for a dog that occurred before today""" 
+  
+  past_entries_joined = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.time_happen +timedelta(days=1) <= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
+
+  return past_entries_joined
+
+def get_dog_entries_by_day(dog_id, time_happen):
+
+  new_time = time_happen.strftime("%m/%d/%Y")
+  test2 = cast(Entry.time_happen, Date)
+
+
+  working = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(cast(Entry.time_happen, Date) == time_happen.strftime("%m/%d/%Y")).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
+
+
+  return working
 
 
 
