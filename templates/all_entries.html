@@ -21,19 +21,24 @@
   <div class="row">
 
     <div class="col-7 bordered">
-    <h3>Daily Log</h3>
+    <h3>Log (last 7 days)</h3>
     <hr>
 
-
- <!-- LIST TEST -->
-    <ul class="list-group list-group-flush ">
       
       {% for key, value in day_dict.items() %}
-        <li class="list-group-item list-group-item-dark">
-            <b>{{ key }}</b>
-        </li>
+        <div class="row green">
+          <!-- <hr size=5px> -->
+
+          <!-- <h5 style="border:3px; border-style:solid; padding: 0.5em; border-radius: 5px;"> -->
+            <h5 >
+              {{ key }}
+            </h5>
+            <br>
+              
+        </div>
+        
           {% for each in value %}
-          <div class="col table-icon">
+          <div class="col table-icon pull-right">
   
             <img src= "/static/images/{{ each.entry_type }}.svg" alt="{{ each.entry_type }}">
             <p>{{ each.entry_type }}</p>
@@ -52,6 +57,8 @@
             <hr>
             <p> 
             {% else %} No entries have been logged 
+            <br>
+            <hr>
 
 
 
@@ -59,62 +66,9 @@
 
         {% endfor %}
 
-      
-      {% for entry in today_entries|reverse %}
+            </div>
 
-      
-
-      <li class="list-group-item cream">
-      <div class="col-6 table-icon">
-        <!-- <img src= "/static/images/training.svg" alt="{{ entry.entry_type }}"> -->
-        <img src= "/static/images/{{ entry.entry_type }}.svg" alt="{{ entry.entry_type }}">
-        <p>{{ entry.entry_type }}</p>
-      </div>
-
-        <h5>{{ entry.entry_name }}
-          {% if entry.flag == 'Warning' %}
-            <span class="material-icons" style="color:#ff4a1c;">flag</span>
-          {% endif %}
-        </h5> 
-        {{ entry.time_happen }} 
-        <br>With {{ entry.first_name }} 
-        
-        <br><i>{{ entry.notes }}</i>
-    
-        {% else %} No entries have been logged 
-      </li>
-      {% endfor %}
-      
-
-
-    </ul>
-    
-<!-- LIST TEST END -->
-
-      {% for entry in entries|reverse %}
-      <div class="col-6 table-icon">
-        <!-- <img src= "/static/images/training.svg" alt="{{ entry.entry_type }}"> -->
-        <img src= "/static/images/{{ entry.entry_type }}.svg" alt="{{ entry.entry_type }}">
-        <p>{{ entry.entry_type }}</p>
-      </div>
-
-      
-        <h5>{{ entry.entry_name }}
-          {% if entry.flag == 'Warning' %}
-            <span class="material-icons" style="color:#ff4a1c;">flag</span>
-          {% endif %}
-        </h5> 
-        {{ entry.time_happen }} 
-        <br>With {{ entry.first_name }} 
-        
-        <br><i>{{ entry.notes }}</i>
-        <hr>
-        <p> 
-        {% else %} No entries have been logged 
-      
-      {% endfor %}
-      
-      </div>
+  
 
       <div class="col-4 bordered">
         <h3 class="orange">Flagged</h3>

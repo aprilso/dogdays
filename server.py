@@ -370,7 +370,7 @@ def view_entries(dog_id):
     dates_list = []
     day_dict = {}
 
-    for day in range(5):
+    for day in range(7):
         d = today-timedelta(days = day)
         
         # new_day_entries = crud.get_dog_entries_by_day(dog_id, d)
