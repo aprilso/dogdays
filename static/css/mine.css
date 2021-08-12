@@ -65,6 +65,10 @@ section {
   filter: opacity(0.9)
 }
 
+.jumbotron-text {
+  color: #FEF9F8;
+}
+
 .footer-jumbotron {
   background-image: url("../images/multipledogs.jpeg");
   background-size: cover;
@@ -108,6 +112,11 @@ section {
   color:#ff4a1c;
 }
 
+.green {
+  color:#32936f;
+
+}
+
 .padded {
   padding: 2%;
 }
@@ -138,13 +147,14 @@ section {
 label {
   display: inline-block;
   padding: 5px;
-
 }
 
 .btn {
-  margin: 20px;
+  /* margin: 20px; */
   /* used for Sign Up page, this could be an issue on other buttons */
 }
+
+
 
 .center-cropped {
   object-fit: contain;
@@ -185,6 +195,12 @@ ul.no-bullets {
   margin: 0; /* Remove margins */
 }
 
+.center-everything {
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
 /* FROM the best-of-bootstrap.css */
 
 /* All the colors you can customize for a navbar! */

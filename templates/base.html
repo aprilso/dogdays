@@ -49,14 +49,15 @@
         
         {% if session %} 
         <a class="nav-item nav-link" href="/users/{{ session.get('user_id') }}">Dashboard</a>
-        <a class="nav-item nav-link" href="#">Today</a>
+        <!-- <a class="nav-item nav-link" href="#">Today</a> -->
         <a class="nav-item nav-link" href="/logout">Log Out</a>
         {% else %}
 
         <a class="nav-item nav-link" href="/login">Log In</a>
         <a class="nav-item nav-link" href="/new_user">Register</a>
-        
+        <!-- <button type="button" class="btn btn-outline-success" onclick="location.href='/new_user'">Register</button> -->
         {% endif %} 
+        &nbsp;
       </ul>
     </div>
   </div>

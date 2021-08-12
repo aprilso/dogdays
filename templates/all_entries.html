@@ -4,7 +4,7 @@
 {% block body %}
 
 <section class="centering-content-demo container mt-4">
-  <h3><span class="material-icons d-inline-block align-bottom">event</span> {{ dog.dog_name }}'s Days</h3>
+  <h3><span class="material-icons d-inline-block align-bottom">event</span> {{ dog.dog_name }}'s Log</h3>
 
 
   <div class="center-cropped img-thumbnail" 
@@ -13,24 +13,14 @@
 
   <br>
 
-  <a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
+  <a href="/dogs/{{ dog.dog_id}}/entries">+Add Entry</a>
   <br>
-  <a href="/dogs/{{ dog.dog_id}}"> Back to profile</a>
+  <a href="/dogs/{{ dog.dog_id}}">Return to profile</a>
 
 
   <div class="row">
-    <div class="column bordered">
-      <h3>Today</h3>
 
-
-      {{ today_entries }}
-
-
-     
-
-    </div>
-
-    <div class="column bordered">
+    <div class="col-8 bordered">
     <h3>History</h3>
     <p> (Add links to sort by time, type, user_id)
       (sort by )
@@ -39,7 +29,7 @@
 
       <h4>{{ entry.entry_name }}
         {% if entry.flag == 'Warning' %}
-          <span class="material-icons">flag</span>
+          <span class="material-icons" style="color:#ff4a1c;">flag</span>
         {% endif %}
         </h4> 
       {{ entry.time_happen }}</li>
@@ -47,12 +37,22 @@
       <br>Recorded by {{ entry.first_name }} 
       
       <br> Notes: {{ entry.notes }}
+      <hr>
       <p> 
       {% else %} No entries have been logged 
       
 
       {% endfor %}
       
+      </div>
+
+      <div class="col-3 bordered">
+        <h3>Flagged</h3>
+  
+  
+        {{ today_entries }}
+  
+  
       </div>
 
 </section>

@@ -4,84 +4,87 @@
 {% block body %}
 
 <section class="centering-content-demo container mt-4">
-  <h3><span class="material-icons">pets</span> {{ dog.dog_name }}'s Profile</h3>
+  <div class="row">
+    <div class="col-4">
+      <h3><span class="material-icons">pets</span> {{ dog.dog_name }}'s Profile</h3>
 
+      <div class="center-cropped img-thumbnail" 
+          style="background-image: url('{{ dog.photo }}');">
+      </div>
+    </div>
 
-  <div class="center-cropped img-thumbnail" 
-      style="background-image: url('{{ dog.photo }}');">
+    
+    
   </div>
 
-  <!-- <img src="{{ dog.photo }}" class="img-responsive" style="height:200px"> -->
-  <!-- <p>(dog image here) (upload image link) </p> -->
+  <br>
+  <div class="row">
+  <div class="col-6">
+    
+    <h4>Basics </h4>
+    <ul class="no-bullets">
+      <li>Sex: {{ dog.sex }}
+      <li>Breed: {{ dog.breed }}
+      <li>Birthday: {{ dog.dob }} 
+      <li>Age: {{ dog_age }}
+      <li>Color: {{ dog.primary_color}}
+    </ul>
+    <br>
+    <!-- <p>(Update info link)</p> -->
 
-  <!-- <form action="/upload-dog-photo" method="post" enctype="multipart/form-data">
-    <input type="file" name="dog-photo">
-    <input type="submit">
-  </form> -->
-  <br>
-  <h4>Schedule</h4>
-  <!-- put in separate column -->
-  <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li> 
-  <br>
-  <a href="/dogs/{{ dog.dog_id}}/entries"> Add Entry</a>
-  <br>
-  <a href="/dogs/{{ dog.dog_id}}/view-entries">View Entries (FIX)</a>
-
-  <br>
-  <h4>Basics </h4>
-  <ul class="no-bullets">
-    <li>Sex: {{ dog.sex }}
-    <li>Breed: {{ dog.breed }}
-    <li>Birthday: {{ dog.dob }} 
-    <li>Age: {{ dog_age }}
-    <li>Color: {{ dog.primary_color}}
-  </ul>
-  <br>
-  <!-- <p>(Update info link)</p> -->
-
-  <h4>Health and Care</h4>
-  <ul class="no-bullets">
-    <li>Food: {{dog.food}}
-    <li>Allergies: {{dog.allergies}}
-    <li>Medication: {{dog.medication}}
-    <li>Microchip Number: {{dog.microchip_num}}
-    <li>Weight (lbs): {{dog.weight}}
-    <li>Vet Info: {{dog.medical_info}}
-  </ul>
-  <br>
-  <h4>About</h4>
-  <ul class="no-bullets">
-  <li>Bio: {{ dog.bio }}
-  <li>Misc Notes: {{dog.misc_notes}}
-  </ul>
-  <br>
+    <h4>Health and Care</h4>
+    <ul class="no-bullets">
+      <li>Food: {{dog.food}}
+      <li>Allergies: {{dog.allergies}}
+      <li>Medication: {{dog.medication}}
+      <li>Microchip Number: {{dog.microchip_num}}
+      <li>Weight (lbs): {{dog.weight}}
+      <li>Vet Info: {{dog.medical_info}}
+    </ul>
+    <br>
+    <h4>About</h4>
+    <ul class="no-bullets">
+    <li>Bio: {{ dog.bio }}
+    <li>Misc Notes: {{dog.misc_notes}}
+    </ul>
+    <br>
 
 
 
-  <p>
-    <h4>Caretakers</h4>
-    <p>Dog ID: {{dog.dog_id}}</p>
-    <ul>
-      {% for userdog in userdogs %}
-      
-      <li>
-          
-          <a href="/users/{{ userdog.user.user_id }}">{{ userdog.user.first_name }} {{userdog.user.last_name }}</a>
-          {% if loop.first %} <i>(main caretaker)</i>
-          {% endif %}
-          
-      </li>
-      {% endfor %}
+    <p>
+      <h4>Caretakers</h4>
+      <p>Dog ID: {{dog.dog_id}}</p>
+      <ul>
+        {% for userdog in userdogs %}
+        
+        <li>
+            
+            <a href="/users/{{ userdog.user.user_id }}">{{ userdog.user.first_name }} {{userdog.user.last_name }}</a>
+            {% if loop.first %} <i>(main caretaker)</i>
+            {% endif %}
+            
+        </li>
+        {% endfor %}   
+    </p>
+  </div>
 
-      
-  </p>
+  <br>
+  <div class="col ">
+  
+    <h4>Daily Log</h4>
+    <a href="/dogs/{{ dog.dog_id}}/entries">+Log Entry</a>
+    <br>
+    <a href="/dogs/{{ dog.dog_id}}/view-entries">View Entries (FIX)</a>
+    <p>
+    <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li> 
+    </p>
+  </div>
+ 
     <!-- <form action="/dogs/{{ dog.dog_id }}/remove" method="DELETE">  
       <input type="submit" value="Remove dog from your dogs">
     </form> -->
+  </div>
 </section>
-
-
-
 
 
 {% endblock body %}
