@@ -53,7 +53,7 @@
 
     <p>
       <h4>Caretakers</h4>
-      <p>Dog ID: {{dog.dog_id}}</p>
+      
       <ul>
         {% for userdog in userdogs %}
         
@@ -65,6 +65,13 @@
             
         </li>
         {% endfor %}   
+      </ul>
+        <p>Dog ID: {{dog.dog_id}} 
+          <br>
+        <small>Share this Dog ID with other users to add them as a caretaker</small>
+        </p>
+        <br>
+        
     </p>
   </div>
 
@@ -72,9 +79,9 @@
   <div class="col ">
   
     <h4>Daily Log</h4>
-    <a href="/dogs/{{ dog.dog_id}}/entries">+Log Entry</a>
+    <a href="/dogs/{{ dog.dog_id}}/entries">+Add Entry</a>
     <br>
-    <a href="/dogs/{{ dog.dog_id}}/view-entries">View Entries (FIX)</a>
+    <a href="/dogs/{{ dog.dog_id}}/view-entries">View All Entries</a>
     <p>
     <li><a href="http://localhost:3000/dogs/{{ dog.dog_id}}/schedule">Dog's Schedule</a></li> 
     </p>

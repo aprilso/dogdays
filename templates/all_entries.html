@@ -21,25 +21,31 @@
   <div class="row">
 
     <div class="col-7 bordered">
-    <h3>Log</h3>
+    <h3>Daily Log</h3>
     <hr>
     
 
       {% for entry in entries|reverse %}
+      <div class="col-1">
+        <img class="table-icon" src= "/static/images/training.svg">
+      </div>
 
-      <h5>{{ entry.entry_name }}
-        {% if entry.flag == 'Warning' %}
-          <span class="material-icons" style="color:#ff4a1c;">flag</span>
-        {% endif %}
-        </h5> 
-      {{ entry.time_happen }}</li>
-      <br>{{ entry.entry_type }}
-      <br>Recorded by {{ entry.first_name }} 
       
-      <br> Notes: {{ entry.notes }}
-      <hr>
-      <p> 
-      {% else %} No entries have been logged 
+        <h5>{{ entry.entry_name }}
+          {% if entry.flag == 'Warning' %}
+            <span class="material-icons" style="color:#ff4a1c;">flag</span>
+          {% endif %}
+          </h5> 
+        {{ entry.time_happen }} with {{ entry.first_name }} 
+        <br>{{ entry.entry_type }}
+        
+        <!-- <img src= "{{ entry.entry_type }}.svg" width="50px"> -->
+        
+  
+        <br><i>{{ entry.notes }}</i>
+        <hr>
+        <p> 
+        {% else %} No entries have been logged 
       
       {% endfor %}
       
@@ -56,11 +62,10 @@
           
             <span class="material-icons" style="color:#ff4a1c;">flag</span>
           </h5> 
-          {{ entry.time_happen }}</li>
+          {{ entry.time_happen }} with {{ entry.first_name }} 
           <br>{{ entry.entry_type }}
-          <br>Recorded by {{ entry.first_name }} 
         
-          <br> Notes: {{ entry.notes }}
+          <br><i>{{ entry.notes }}</i>
         {% endif %}
           
           <p> 

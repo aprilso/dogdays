@@ -54,6 +54,17 @@ img, svg {
 	text-align: center;
 }
 
+.table-icon {
+  float: right;
+  width: 40px;
+  opacity: 0.8;
+}
+
+/* .log-text {
+  float: right;
+} */
+
+
 section {
 	margin-top: 50px;
 }
