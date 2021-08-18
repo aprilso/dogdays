@@ -29,7 +29,7 @@ for n in range(10):
   password = fake.password()
   email = last_name +f"_user{n}"+"@gmail.com"
   phone_number = fake.phone_number()
-  icon = "default_icon.jpg"
+  icon = "/static/images/other.svg"
 
 #how to make parts of this null or go to default? do I specify default here or in crud.py?
   db_user = crud.create_user(first_name, last_name, email, password, phone_number, icon)
@@ -43,7 +43,7 @@ with open('data/male-dog-names.json') as d: #"with" opens the file, closes it fo
 
   for dog in dog_data:
     dog_name= dog 
-    photo = "default_dog.jpg"
+    photo = "/static/images/other.svg"
     bio = "A rescue dog from " + fake.country()
     medication = "Flea medication, once a month"
     medical_info = "N/A" 
