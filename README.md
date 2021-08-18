@@ -5,7 +5,25 @@
 ## About
 Dog Days is a full stack web application for keeping track of your dogs’ info and activities, and coordinate and share among multiple caretakers. Create an account, add new or existing dogs, and share and track their activities.
 
-## Screenshots
+## Features
+
+Create a new user profile, then add new or existing dogs. View important dog info like health and care or behavior notes.
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_newdog.png" width="100%" alt="Dog Log">
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_dogprofile.png" width="100%" alt="Dog Profile">
+
+Track their activities by recording a new entry, adding info like category (feeding, exercise, grooming, etc), time it occurred, and optional notes. Flag for follow up to make sure other caretakers see it.
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_newentry.png" width="100%" alt="New Entry">
+
+View all of your dog's activities synced with all of their caretakers. The icon system makes it easy to see your dog's day at a glance. Flagged entries are on the side so you never miss any important updates. 
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_log.png" width="100%" alt="Dog Log">
+
+## Gallery
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_home.png" width="100%" alt="Home Page">
 
 <img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_register.png" width="100%" alt="Dog Days register for new account page">
 
