@@ -20,7 +20,49 @@ Dog Days is a full stack web application for keeping track of your dogs’ info 
 
 ## Instructions
 
-### Setup
+To run the Dog Days app on your machine:
+
+1) Make sure you have PostgreSQL and Python 3.7 installed. 
+
+2) Clone or fork this repo:
+```
+https://github.com/aprilso/dogdays.git
+```
+3) Create a new virtual environment inside your Dog Days directory, then activate it:
+
+```
+virtualenv env
+source env/bin/activate
+```
+4) Install the dependencies:
+```
+pip install -r requirements.txt
+```
+
+5) Sign up to use the Cloudinary API - https://cloudinary.com/ and store your API keys in your secrets.sh file.
+Example:
+```export CLOUDINARY_KEY = "YOUR_API_KEY" export CLOUDINARY_SECRET = "YOUR_API_SECRET"
+   ```
+
+6) Set up the database:
+```
+createdb dogdaysdb
+python3 model.py
+python3 seed_database.py
+```
+
+7) Run the server:
+```
+python3 server.py
+```
+You can now access the Dog Days app at 'localhost:5000/'
+
+
+
+### Notes on Javascript server: 
+8/18/21 - The project currently has another Javascript server connected through Vite.js for future React builds (accessible through 'localhoust:3000/'). This is not requred for normal use and does not affect the current functionality.
+
+### Javascript Setup
 
 Setup Python environment as normal.
 
@@ -32,3 +74,10 @@ In 2 different tabs
 
 - Start the Python server
 - Run Javascript server `npm run dev`
+
+
+### About the developer
+April Soetarman is an artist, designer, creative technologist, and new puppy owner. This is her first full-stack project. She can be found on [LinkedIn](https://www.linkedin.com/in/aprilsoetarman/), [Github](https://github.com/aprilso), and her portfolio site [AprilSoetarman.com](https://www.aprilsoetarman.com)
+
+Huge thanks to the Hackbright instructors, my mentor Carolina Avila, and the rest of my September 2021 cohort!
+
