@@ -1,9 +1,17 @@
-<img src="https://github.com/aprilso/dogdays/static/images/readme-images/dogdayslogo.png" width="50%" alt="Dog Days Logo">
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdayslogo.png" width="50%" alt="Dog Days Logo">
 
 # Dog Days
 
 ## About
 Dog Days is a full stack web application for keeping track of your dogs’ info and activities, and coordinate and share among multiple caretakers. Create an account, add new or existing dogs, and share and track their activities.
+
+## Features
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays-register.png" width="40%" alt="Dog Days register for new account page">
+
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays-signin.png" width="40%" alt="Dog Days signin page">
+
+
 
 ## Technologies
 
