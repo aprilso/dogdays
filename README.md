@@ -7,9 +7,9 @@ Dog Days is a full stack web application for keeping track of your dogs’ info 
 
 ## Features
 
-<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays-register.png" width="40%" alt="Dog Days register for new account page">
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_register.png" width="40%" alt="Dog Days register for new account page">
 
-<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays-signin.png" width="40%" alt="Dog Days signin page">
+<img src="https://github.com/aprilso/dogdays/blob/main/static/images/readme-images/dogdays_signin.png" width="40%" alt="Dog Days signin page">
 
 
 
