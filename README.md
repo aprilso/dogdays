@@ -104,7 +104,7 @@ In 2 different tabs
 - Run Javascript server `npm run dev`
 
 
-### About the developer
+## About the developer
 April Soetarman is an artist, designer, creative technologist, and new puppy owner. This is her first full-stack project. She can be found on [LinkedIn](https://www.linkedin.com/in/aprilsoetarman/), [Github](https://github.com/aprilso), and her portfolio site [AprilSoetarman.com](https://www.aprilsoetarman.com)
 
 Huge thanks to the Hackbright instructors, my mentor Carolina Avila, and the rest of my September 2021 cohort!
