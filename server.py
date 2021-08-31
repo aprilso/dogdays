@@ -22,6 +22,7 @@ from datetime import datetime, date, timedelta
 
 app = Flask(__name__)
 app.secret_key = "thiswillbeasecretkey"  # Used to encrypt a session. Can set it to generate random #s and letters each time, or in secrets.sh (make more secret before deployment)
+#store in secrets.sh
 app.jinja_env.undefined = StrictUndefined
 
 # TBD: Add routes for production
@@ -125,7 +126,7 @@ def login():
 
 @app.route("/logout")
 def logout():
-    """logs out the user, redirects them to homepage"""  # check if this is good
+    """logs out the user, redirects them to homepage"""  
     session.clear()
     flash("You have been logged out!")
     return redirect("/")
@@ -226,7 +227,7 @@ def new_dog_to_user():
     crud.assign_dog_to_human(user_id, dog_id, primary_user)
     flash("Success! New dog has been added with you as primary user")
 
-    # return redirect("/")
+
     return redirect(f"/users/{ user_id }")
 
 
@@ -454,4 +455,4 @@ def dog_schedule(dog_id):
 
 if __name__ == "__main__":
     connect_to_db(app)
-    app.run("0.0.0.0", debug=True)
+    app.run("0.0.0.0")
