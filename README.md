@@ -69,8 +69,9 @@ pip install -r requirements.txt
 
 5) Sign up to use the Cloudinary API - https://cloudinary.com/ and store your API keys in your secrets.sh file.
 Example:
-```export CLOUDINARY_KEY = "YOUR_API_KEY" export CLOUDINARY_SECRET = "YOUR_API_SECRET"
-   ```
+```
+export CLOUDINARY_KEY = "YOUR_API_KEY" export CLOUDINARY_SECRET = "YOUR_API_SECRET"
+```
 
 6) Set up the database:
 ```
