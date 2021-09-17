@@ -76,6 +76,7 @@ Example:
 ```
 createdb dogdaysdb
 python3 model.py
+python3 seed_database.py
 ```
 
 7) Run the server:
