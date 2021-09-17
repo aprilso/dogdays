@@ -3,7 +3,7 @@
 from model import Task, TaskHistory, db, User, Dog, UserDog, connect_to_db, Entry
 from datetime import datetime, date, timedelta
 
-from sqlalchemy import cast, Date #added
+from sqlalchemy import cast, Date
 
 
 
@@ -32,18 +32,15 @@ def get_user_by_email(email):
 
 def get_user_without_dog(dog_id):
     """return all users without dogs"""
-    #To-Do - where their dog_id = null??
+    #To-Do - where their dog_id = null
     pass
 
 
-
-#Note: unwieldy, could take in one dog_info as a dictionary and then key into it 
 def create_dog(dog_name, photo, bio, medication, medical_info, allergies, weight, food, misc_notes, sex, breed, primary_color, microchip_num, dob):
   """Create and return a new dog."""
 
   dog = Dog(dog_name=dog_name, photo=photo, bio=bio, medication=medication, medical_info=medical_info, allergies=allergies, weight=weight, food=food, misc_notes=misc_notes, sex=sex, breed=breed,
         primary_color=primary_color, microchip_num=microchip_num, dob=dob)
-  #add vet
 
   db.session.add(dog)
   db.session.commit()
@@ -52,7 +49,7 @@ def create_dog(dog_name, photo, bio, medication, medical_info, allergies, weight
 
 #To-Do - create functions for updating the info for users and dogs (without taking in each variable)
 # def update_dog():
-#Note: check out ratings lab crud.py
+
 
 # def edit_dog(dog_id):
 #   """Edit the info for an existing dog"""
@@ -72,16 +69,12 @@ def return_all_dogs():
 
 def update_dog_photo(dog_id, new_photo):
   """update the dog's photo url from the upload"""
-  # 7/25/21 - check if this works
-
+ 
   old_photo = Dog.query.get(dog_id)
   old_photo.photo = new_photo
   db.session.commit()
 
-  # Dog.query.filter(Dog.photo == photo).replace()
-  # db.session.commit()
 
-#To-Do: update human info by user_id, update dog info by dog_id
 
 def get_dog_by_user(user_id):
   """get all the dogs that belong to a user"""
@@ -94,7 +87,7 @@ def get_user_by_dog(dog_id):
   return UserDog.query.filter(UserDog.dog_id == dog_id).all()
 
 def assign_dog_to_human(user_id, dog_id, primary_user):
-  """assign a dog to a human""" #should also work for assign human to dog
+  """assign a dog to a human""" 
 
   userdog = UserDog(dog_id=dog_id, user_id=user_id, primary_user=primary_user)
 
@@ -104,32 +97,12 @@ def assign_dog_to_human(user_id, dog_id, primary_user):
   return userdog
 
 def remove_dog(user_id, dog_id):
-  """Remove a dog from a user's care""" #check if it works
+  """Remove a dog from a user's care""" 
 
   UserDog.query.filter(UserDog.user_id == user_id, UserDog.dog_id == dog_id).delete()
   db.session.commit()
 
 
-# DELETE LATER
-# def dog_age(dog_id):
-#   """return the dog's age"""
-
-#     today = datetime.now()
-#     # today_year = datetime.now().year
-#     # today_month = datetime.now().month
-
-#     dog_year = dog.dob.year
-#     dog_month = dog.dob.month
-
-#     years = today.year - dog_year
-#     months = today.month - dog_month
-
-#     if (today.day < dog.dob.day):
-#         months -= 1
-#         while months < 0:
-#             months += 12
-#             years -= 1
-#     return dog_age = '%sy %smo'% (years, months)
 
 
 #### ENTRIES SECTION -----
@@ -146,7 +119,7 @@ def create_entry(dog_id, user_id, entry_name, entry_type, time_happen, notes, fl
 
 
 def delete_entry(entry_id):
-  """delete a selected entry""" #need to check if it works
+  """delete a selected entry""" 
 
   Entry.query.filter(Entry.entry_id == entry_id).delete()
   db.session.commit()
@@ -161,59 +134,14 @@ def sort_entry_by_type(entry_type):
 def get_entries_by_dog(dog_id):
   """Get all the entries for a dog"""
 
-  # return Entry.query.filter(Entry.dog_id == dog_id).order_by(Entry.time_happen) #This is good!
-
   return Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen)
-  # ADD ALL THE COLUMNS YOU NEED IN ADD_COLUMNS
+
 
 
 def get_dog_entries_today(dog_id):
   """Get all the entries for a dog that occurred today""" 
 
-  this_day = date.today() #but want just by year, month, day
-
-  year = this_day.year
-  month = this_day.month
-  day = this_day.day
-
-  entry_time = Entry.query.filter(Entry.time_happen == this_day).all()
-
-  # entry_time = Entry.query.filter(date_format(Entry.time_happen,”Y-m-d”) == this_day).all()
-
-  # entry_time = Entry.query.filter(datetime.strptime(Entry.time_happen, '%Y-%m-%d') == this_day).all()
-  # .filter(Entry.dog_id == dog_id).all()
-
-  # entry_time = Entry.query.filter(DATE((Entry.time_happen) == this_day).all()
-
-  # entry_time = Entry.query.filter(extract('month', Entry.time_happen) == datetime.today().month).all
-  
-  # , Entry.time_happen.month == month, Entry.time_happen.day == day).all()
-  # entry_match = entry_time.filter(Entry.time_happen.day == day)
-  # today_year = datetime.now().year
-  # today_month = datetime.now().month
-  
-  # dog_entries = Entry.query.filter(Entry.dog_id == dog_id).all()
-  # today_entries = Entry.query.filter(Entry.time_happen == entry_time).all()
-  # return entry_time
-
-  #time_happen in the db is a datetime, but doesn't have a .year, .month or .day method
-
-  #############
-  # entry_test = Entry.query.filter(cast(Entry.time_happen, Date) == date.today()).all() #needs to import sqlalchemy Date
-
-
-  # test_result = Entry.query.filter((Entry.time_happen+timedelta(days=1)) > datetime.now())
-  
-  past_entries = Entry.query.filter(Entry.time_happen +timedelta(days=1) <= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
-  #returns all the entries that happened before today, just for this dog
-  today_entries = Entry.query.filter(Entry.time_happen +timedelta(days=1) >= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
-  #returns all the entries just for today
-  join_tables = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen)
-
   today_entries_joined = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(Entry.time_happen +timedelta(days=1) >= datetime.now()).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
-
-
-  #need to do something that will sort by day, for loop around?
 
   return today_entries_joined
 
@@ -226,12 +154,7 @@ def get_dog_entries_past(dog_id):
 
 def get_dog_entries_by_day(dog_id, time_happen):
 
-  new_time = time_happen.strftime("%m/%d/%Y")
-  test2 = cast(Entry.time_happen, Date)
-
-
   working = Entry.query.join(User).add_columns(Entry.entry_name, Entry.time_happen, Entry.entry_type, Entry.notes, Entry.flag, User.first_name, User.last_name).filter(cast(Entry.time_happen, Date) == time_happen.strftime("%m/%d/%Y")).filter(Entry.dog_id == dog_id).order_by(Entry.time_happen).all()
-
 
   return working
 
@@ -297,7 +220,7 @@ def return_all_tasks_from_user(user_id):
 
 
 #CRUD - make a function that translates the Dictionary format of Task class objects - getting information that's already there
-#Still need all the server side functions
+
 
 
 if __name__ == '__main__':

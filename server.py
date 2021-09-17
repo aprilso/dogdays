@@ -71,13 +71,7 @@ def dogprofile(dog_id):
     userdogs = crud.get_user_by_dog(dog_id)
     img_url = request.args.get("imgURL")
 
-    # today_date = datetime.now()
-    # dog_birthday = dog.dob
-    # dog_age = ((today_date - dog_birthday) /(365.25 / 12))
-
     today = datetime.now()
-    # today_year = datetime.now().year
-    # today_month = datetime.now().month
 
     dog_year = dog.dob.year
     dog_month = dog.dob.month
@@ -186,7 +180,7 @@ def new_dog_to_user():
     dob = request.form.get("dob") or None
 
 
-     #Cloudinary part
+     #Cloudinary 
     dog_photo = request.files["dog-photo"]
 
     result = cloudinary.uploader.upload(
@@ -214,10 +208,8 @@ def new_dog_to_user():
         microchip_num,
         dob,
     )
-    # for cloudinary, add img_url to crud, pass in img_url as part of crud
 
 
-    # To-Do - Check that primary user is displayed as true
     user_id = session["user_id"]
     dog_id = dog.dog_id
     primary_user = True
@@ -282,7 +274,6 @@ def remove_dog(user_id, dog_id):
 
 
 
-
 @app.route("/upload-user-photo", methods=["POST"])
 def add_user_photo():
     """Upload a user (human) photo - optional"""
@@ -296,26 +287,6 @@ def show_image():
 
     return redirect(f"/dogs/{ dog_id }")
 
-
-# @app.route("/upload-dog-photo", methods=["POST"])
-# def add_dog_photo():
-#     """Process and upload a dog profile photo"""
-#     dog_photo = request.files["dog-photo"]
-
-#     result = cloudinary.uploader.upload(
-#         dog_photo,
-#         api_key=CLOUDINARY_KEY,
-#         api_secret=CLOUDINARY_SECRET,
-#         cloud_name="dogdays",
-#     )
-
-#     img_url = result["secure_url"]
-#     dog_id = session["dog_id"]
-
-#     crud.update_dog_photo(dog_id, img_url)
-#     # need to save this result to the database so it can be accessed again - update this as "photo" in the database
-
-#     return redirect(url_for("show_image", imgURL=img_url))
 
 
 ##### ENTRY SECTION
@@ -335,7 +306,6 @@ def new_entries(dog_id):
 def add_entry(dog_id):
     """Add a new entry to the database"""
 
-    # dog_id = session["dog_id"] #check that it's stored in the session
     user_id = session["user_id"]
 
     entry_name = request.form.get("entry_name")
@@ -373,11 +343,6 @@ def view_entries(dog_id):
 
     for day in range(7):
         d = today-timedelta(days = day)
-        
-        # new_day_entries = crud.get_dog_entries_by_day(dog_id, d)
-        #test_day = d.strftime("%m/%d/%Y")
-
-        # dates_list.append(d.strftime("%m/%d/%Y"))
         
         day_dict[d.strftime("%Y-%m-%d")] = crud.get_dog_entries_by_day(dog_id, d)
 

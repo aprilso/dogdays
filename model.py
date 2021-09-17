@@ -19,13 +19,11 @@ class User(db.Model):
   password = db.Column(db.String)
   phone_number = db.Column(db.String, unique=True)
   icon = db.Column(db.String, default='humanicon.jpg')
-  #optional: color_id = db.Column(db.String, unique=True)
 
   dogs = db.relationship("Dog",
                         secondary="users_dogs",
                         backref="users")
-  #can access the dogs attribute through users_dogs, don't have to create for Dog class also cause backref
-  #optional - check crud functions for accessing users with dogs?
+
 
   def __repr__(self):
         return f'<User: user_id={self.user_id} last_name={self.last_name} email={self.email}>'
@@ -58,8 +56,7 @@ class Dog(db.Model):
         return f"<Dog: dog_id={self.dog_id} dog_name={self.dog_name}>"
 
 
-#users_dogs is the middle for two one-to-many relationships (not actually many to many)
-# a dog can have many users. a user can have many dogs.
+#users_dogs is the middle for two one-to-many relationships (not actually many to many) - a dog can have many users. a user can have many dogs.
 
 class UserDog (db.Model):
   """Relational class that connects a dog of a specific user"""
@@ -81,12 +78,6 @@ class UserDog (db.Model):
   def __repr__(self):
         return f'<UserDog: dog_id={self.dog_id} user_id={self.user_id}>'
 
-#Questions - relationships vs foreignkey
-#to have a relationship, need a foreign key in one table, primary key in another table
-
-#foreignkeys - this column refers to a column in another database table
-#relationships - this thing is a reference to another table
-#relationships in sqlalchemy do use foreign keys
 
 
 ###### NEWER ENTRY VERSION 
@@ -222,14 +213,6 @@ class TaskHistory(db.Model):
   #A task that doesn't need to be set, dropdown has (Unscheduled Event)
   #so the task_id takes in None. Frontend restriction
   #each element will have task_id - in this case the task_id will be none.
-
-
-
-
-
-
-
-#Questions - check if nullable is default to true or false (which one do you have to specify?)
 
 
 
