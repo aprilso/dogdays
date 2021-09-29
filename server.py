@@ -223,6 +223,69 @@ def new_dog_to_user():
     return redirect(f"/users/{ user_id }")
 
 
+##EDIT INFO UPDATE
+@app.route("/dogs/<dog_id>/edit-info")
+def show_info_to_edit(dog_id):
+    """Lookup and display existing dog's info"""
+
+    dog = crud.get_dog_by_id(dog_id)
+    #userdogs = crud.get_user_by_dog(dog_id)
+    #img_url = request.args.get("imgURL")
+
+
+    return render_template("edit_dog.html", dog=dog)
+
+
+
+@app.route("/dogs/<dog_id>/update_info", methods=["POST"])
+def update_dog_info(dog_id):
+    """Edit and update dog info"""
+    # dog = crud.get_dog_by_id(dog_id)
+    # userdogs = crud.get_user_by_dog(dog_id)
+    # img_url = request.args.get("imgURL")
+    # dog_age = crud.get_dog_age(dog_id)
+
+
+    dog_name = request.form.get("dog_name")
+    # img_src = "default_dog_icon.jpg"
+    bio = request.form.get("bio")
+    medication = request.form.get("medication")
+    medical_info = request.form.get("medical_info")
+    allergies = request.form.get("allergies")
+    weight = request.form.get("weight") or None
+    food = request.form.get("food")
+    misc_notes = request.form.get("misc_notes")
+    sex = request.form.get("sex")
+    breed = request.form.get("breed")
+    primary_color = request.form.get("primary_color")
+    microchip_num = request.form.get("microchip_num") or None
+    dob = request.form.get("dob") or None
+
+    crud.update_dog_info(dog_id, 
+        dog_name,
+        bio,
+        medication,
+        medical_info,
+        allergies,
+        weight,
+        food,
+        misc_notes,
+        sex,
+        breed,
+        primary_color,
+        microchip_num,
+        dob)
+
+    return redirect(f"/dogs/{ dog_id }")
+
+
+
+
+
+    
+
+
+
 @app.route("/lookup_dog", methods=["GET"])
 def lookup_dog():
     """Look up an existing dog to add"""

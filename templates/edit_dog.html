@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Update Dog Info{% endblock %}
+
+{% block body %}
+
+
+<section class="forms-demo container mt-4">
+  <div class="row">
+    <div class="column bordered">
+      <h2>Update dog info</h2>
+      <hr>
+      <form action="/dogs/{{ dog.dog_id }}/update_info" method="POST" enctype="multipart/form-data">
+        <h4>Basics</h4>
+        <p>
+          <label for="dog_name">Dog's name*</label> <input type="text" name="dog_name" value= {{dog.dog_name}}>
+        </p>
+
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" >
+          {% if dog.sex == "M" %}
+            <option value="M" selected="selected">Male</option>
+            <option value="F">Female</option>
+          {% else %}
+            <option value="F" selected="selected">Female</option>
+            <option value="M">Male</option>
+          {% endif %}
+        </select>
+
+        <p>
+          <label for="dob">Date of Birth</label>
+          <input type="date" name="dob" value={{dog.dob}} >
+        </p>
+
+        <p>
+          <label for="breed">Breed</label> <input type="text" name="breed" value={{dog.breed}}>
+        </p>
+
+        <p>
+          <label for="color">Primary Color</label><input type="text" name="primary_color" value={{dog.primary_color}}>
+        </p>
+        <hr>
+        <h4>Health and Care</h4>
+
+        <p>
+          <label for="food">Food</label>
+          <br>
+          <textarea id="food" name="food" rows="2" cols="35">{{dog.food}}</textarea>
+        </p>
+
+        <p>
+          <label for="allergies">Allergies</label><input type="text" name="allergies" value={{dog.allergies}}>
+        </p>
+
+        <p>
+          <label for="microchip">Microchip Number</label><input type="text" name="microchip_num" value={{dog.microchip_num}}>
+        </p>
+
+        <p>
+          <label for="medication">Medication</label> <input type="text" name="medication" value={{dog.medication}}>
+        </p>
+
+        <p>
+          <label for="weight">Weight (lbs)</label><input type="integer" name="weight" value={{dog.microchip_num}}> 
+        </p>
+
+        <p>
+          <label for="vet_info">Vet Info</label><br>
+          <textarea id="medical_info" name="medical_info" rows="3" cols="35">{{dog.medical_info}}</textarea>
+        </p>
+        <hr>
+        <h4>About</h4>
+        <p>
+          <label for="bio">Bio</label><br>
+          <textarea id="bio" name="bio" rows="3" cols="35">{{dog.bio}}</textarea>
+        </p>
+
+        <p>
+          <label for="misc">Miscellaneous Notes</label><br>
+          <textarea id="misc_notes" name="misc_notes" rows="3" cols="35">{{ dog.misc_notes }}</textarea>
+        </p>
+
+        <!-- <p><label for="photo">Photo</photo>
+        <input type="file" name="dog-photo">
+        </p> -->
+
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Submit</button>
+      </form>
+    </div>
+ 
+ 
+  </div>
+</section>
+
+
+{% endblock body %}

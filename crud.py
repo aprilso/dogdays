@@ -103,6 +103,36 @@ def remove_dog(user_id, dog_id):
   db.session.commit()
 
 
+#Edit & update dog info
+def update_dog_info(dog_id, dog_name, bio, medication, medical_info, allergies, weight, food, misc_notes, sex, breed, primary_color, microchip_num, dob):
+  """Update dog info"""
+  
+  dog = Dog.query.get(dog_id)
+
+  dog.dog_name = dog_name
+  dog.bio = bio
+  dog.medication = medication
+  dog.medical_info = medical_info
+  dog.allergies = allergies
+  dog.weight = weight
+  dog.food = food
+  dog.misc_notes = misc_notes
+  dog.sex = sex
+  dog.breed = breed
+  dog.primary_color = primary_color
+  dog.microchip_num = microchip_num
+  dog.dob = dob
+
+  db.session.commit()
+
+  return dog 
+  
+  
+
+
+
+
+
 
 
 #### ENTRIES SECTION -----

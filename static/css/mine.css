@@ -1,6 +1,5 @@
 body {
   background-color: #FEF9F8;
-  /* background-color: #f5f5f5; */
 }
 
 h1, h2, h3, h4, h5{
@@ -224,22 +223,12 @@ ul.no-bullets {
   padding-bottom: 40px;
 
 }
-/* FROM the best-of-bootstrap.css */
 
-/* All the colors you can customize for a navbar! */
 
 /* Navbar background */
 .navbar-custom-theme {
   background: #fef9f8;
-  /* background: #f8efed; */
-
   border-bottom: thin solid #ff4a1c;
-  
-  /* background:#F23838; */
-  /* background: #3d3d3d; */
-  /* background:	#c66d3a; */
-  /* background: #F2994B; */
-  
 }
 
 /* Color of the logo */
@@ -266,39 +255,6 @@ ul.no-bullets {
   text-decoration: none;
   
 }
-
-/* Change border color of navbar-toggler */
-/* .navbar-custom-theme .navbar-toggler { */
-/*   border-color: white; */ 
-
-/* .navbar-custom-theme .navbar-brand {
-  background-image: url("/static/images/DogDaysLogo_RedOrange.svg");
-} */
-
-
-/* You can even edit the toggler icon (see example below)! Here are
- * the properties you can edit:
- *   stroke
- *     the color of the lines
- *
- *   stroke-width
- *     width of lines
- *
- *   stroke-miterlimit
- *     tbh I have no idea how to explain this... it basically helps the SVG
- *     renderer decide when to make a stroke pointy. You can see a better
- *     explanation here:
- *     https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit
- *
- *   d
- *     how to draw the svg. For example:
- *       M4 --- the margin for the first line (set to 4)
- *       12h22 --- 12 is where to start drawing the line, h22 is how long it
- *                 should be
- */
-/* .navbar-custom-theme .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(76, 81, 141)' stroke-width='1' stroke-miterlimit='10' d='M4 12h22 M4 17h22 '/%3E%3C/svg%3E");
-} */
 
 
 
